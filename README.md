@@ -1,2 +1,2 @@
-# curriculum
+# Currículum
 Mi Currículum Vitae (CV)
