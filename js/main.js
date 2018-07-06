@@ -2,18 +2,25 @@ export class Main {
 
     constructor () {
         // enlaces a secciones del menú de navegación
+        /*
         this.linkHome = document.querySelector('#link-home')
         this.linkQuienSoy =  document.querySelector('#link-quien-soy')
         this.linkEstudios =  document.querySelector('#link-estudios')
         this.linkExperiencia =  document.querySelector('#link-experiencia')
         this.linkSobreMi =  document.querySelector('#link-sobre-mi')
         this.linkContacto =  document.querySelector('#link-contacto')
+        */
+
+        this.menu = document.querySelector("#menu");
+
+        this.menuIcon = document.querySelector('.menu-icon');
 
         this.navSecciones = document.querySelectorAll('.menu-principal a');
 
         this.secciones = document.querySelectorAll("section");
 
         this.btnInicio = document.querySelector("#btn-inicio");
+
 
         console.log(this.secciones);
 
@@ -46,6 +53,18 @@ export class Main {
             this.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
         })
 
+        this.menuIcon.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (this.menu.classList.contains('menu-visible')) {
+                this.menu.classList.remove('menu-visible')
+                this.menu.classList.add('menu-oculto')
+            }
+            else {
+                this.menu.classList.remove('menu-oculto')
+                this.menu.classList.add('menu-visible')
+            }
+        })
+
         window.addEventListener('scroll', this.changeMenuStyle.bind(this))
 
     }
@@ -69,7 +88,8 @@ export class Main {
     }
 
     changeMenuStyle () {
-        let pageOffset = window.pageYOffset
+        let desplazamiento = 10
+        let pageOffset = window.pageYOffset + (window.innerHeight / desplazamiento)
         let menuItem = 0
         if (pageOffset >=  this.offsets['#home'] && pageOffset < this.offsets['#quien-soy']) {
             menuItem = 0
@@ -115,7 +135,7 @@ export class Main {
             top += element.offsetTop || 0;
             element = element.offsetParent;
         } while(element);
-        return top - 100;
+        return top - 60; // - 100;
     };
 
     currentYPosition() {
@@ -135,7 +155,7 @@ export class Main {
         while (node.offsetParent && node.offsetParent != document.body) {
             node = node.offsetParent;
             y += node.offsetTop;
-        } return y-60;
+        } return y - 60;
     }
     
     smoothScroll(eID) {
@@ -148,7 +168,7 @@ export class Main {
         let speed = Math.round(distance / 100);
         console.log(speed);
         if (speed >= 20) speed = 20;
-        let step = Math.round(distance / 50);
+        let step = Math.round(distance / 30);
         let leapY = stopY > startY ? startY + step : startY - step;
         let timer = 0;
         if (stopY > startY) {
