@@ -9,49 +9,46 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
+    <script src="./js/app.js" type="module"></script>
 </head>
 
 <body>
     <header>
-        <nav id="menu">
+        <nav id="menu" class="menu-principal arriba">
             <ul>
-                <!--
                 <li>
-                    <a id="a-portada" href="#portada" data-enlace="portada">Portada</a>
-                </li>
-                -->
-                <li>
-                    <a id="a-quien-soy" href="#quien-soy" data-enlace="quien-soy">Quien soy</a>
+                    <a href="#home" data-enlace="home">Home</a>
                 </li>
                 <li>
-                    <a id="a-estudios" href="#estudios" data-enlace="estudios">Estudios</a>
+                    <a id="link-quien-soy" href="#quien-soy" data-enlace="quien-soy">Quien soy</a>
                 </li>
                 <li>
-                    <a id="a-experiencia" href="#experiencia" data-enlace="experiencia">Experiencia</a>
+                    <a id="link-estudios" href="#estudios" data-enlace="estudios">Estudios</a>
                 </li>
                 <li>
-                    <a id="a-sobre-mi" href="#sobre-mi" data-enlace="sobre-mi">Sobre mí</a>
+                    <a id="link-experiencia" href="#experiencia" data-enlace="experiencia">Experiencia</a>
                 </li>
                 <li>
-                    <a id="a-contacto" href="#contacto" data-enlace="contacto" onclick="">Contacto</a>
+                    <a id="link-sobre-mi" href="#sobre-mi" data-enlace="sobre-mi">Sobre mí</a>
+                </li>
+                <li>
+                    <a id="link-contacto" href="#contacto" data-enlace="contacto" onclick="">Contacto</a>
                 </li>
             </ul>
         </nav>
     </header>
-
     <main>
-        <section id="portada" class="scrollable">
+        <section id="home" class="home scrollable active">
             <header>
-                <h2>Miguel Angel Otero Prado</h2>
+                <h1>Miguel Angel Otero Prado</h1>
                 <hr style="margin: 1rem 2rem;">
-                <h3>Currículum Vitae</h3>
+                <h2>Currículum Vitae</h2>
             </header>
         </section>
         <div id="section-wrapper">
             <section id="quien-soy" class="scrollable">
                 <header>
-                    <h2>Quién soy</h2>
+                    <h1>Quién soy</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
@@ -61,10 +58,18 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-            </section>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                </section>
             <section id="estudios" class="scrollable">
                 <header>
-                    <h2>Estudios</h2>
+                    <h1>Estudios</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
@@ -74,10 +79,18 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-            </section>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                </section>
             <section id="experiencia" class="scrollable">
                 <header>
-                    <h2>Experiencia</h2>
+                    <h1>Experiencia</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
@@ -87,10 +100,18 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-            </section>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                </section>
             <section id="sobre-mi" class="scrollable">
                 <header>
-                    <h2>Sobre mí</h2>
+                    <h1>Sobre mí</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
@@ -100,10 +121,18 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-            </section>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                </section>
             <section id="contacto" class="scrollable">
                 <header>
-                    <h2>Contacto</h2>
+                    <h1>Contacto</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
@@ -113,14 +142,22 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-            </section>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
+                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
+                    deserunt.
+                </p>
+                </section>
         </div>
     </main>
     <footer>
-        <a href="#portada" title="Inicio">
+        <a href="#home" id="btn-inicio" data-enlace="home" title="Inicio" style="font-size: 0.8rem">
             <span class="fa-stack fa-2x">
                 <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-angle-up fa-stack-1x fa-inverse"></i>
+                <i class="fas fa-arrow-up fa-stack-1x fa-inverse"></i>
             </span>
         </a>
     </footer>

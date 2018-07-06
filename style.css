@@ -1,4 +1,3 @@
-
 p {
     text-align: justify;
 }
@@ -14,7 +13,7 @@ body > header {
 
 }
 
-nav#menu {
+.menu-principal {
     position: absolute;
     top: 0;
     width: 100%;
@@ -23,18 +22,22 @@ nav#menu {
     text-shadow: 2px 2px 4px black;
 }
 
-nav#menu ul {
+.menu-principal ul {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     z-index: -1;
 }
 
-nav#menu ul li {
+.menu-principal ul li {
+    text-transform: uppercase;
+}
+.menu-principal ul li a {
     display: block;
-    padding: 20px;
+    padding: 1rem 1.5rem;
 }
 
-#portada {
+section.home {
     color: white;
     height: 100vh;
     background-image: url(./assets/portada.png);
@@ -43,7 +46,7 @@ nav#menu ul li {
     background-position: center center;
 }
 
-#portada header {
+section.home header {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -53,7 +56,7 @@ nav#menu ul li {
     font-size: 4rem;
 }
 
-section#portada::after {
+section.home::after {
     content: "";
     position: absolute;
     top: 0;
@@ -64,14 +67,14 @@ section#portada::after {
     opacity: 0.2;
 }
 
-#portada h2, #portada h3 {
+section.home h1, section.home h2 {
     font-size: 3rem;
     text-shadow: 4px 4px 4px black;
 }
-#portada header h3 {
+section.home header h2 {
     font-size: 2rem;
 }
-#portada hr {
+section.home hr {
     box-shadow: 3px 3px 2px black;
 }
 
@@ -83,8 +86,9 @@ section#portada::after {
     max-width: 700px;
 }
 
+/* Botón volver */
 .fa-stack {
-    color: #777777;
+    color: #333339;
 }
 
 body > footer {
@@ -99,7 +103,8 @@ body > footer {
 .arriba {
     position: fixed;
     top: 0;
-    background: rgba(240,240,240,0.8);
+    background-color: #333339;
+    box-shadow: 4px 1px 6px black;
 }
 .oculto {
     display: none;
@@ -107,4 +112,7 @@ body > footer {
 
 p, h2, h3 {
     margin: 10px 0px;
+}
+.active {
+    background-color: grey;
 }
