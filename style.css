@@ -1,0 +1,110 @@
+
+p {
+    text-align: justify;
+}
+
+h1 {
+    margin: 10px 0px;
+}
+
+body > header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+}
+
+nav#menu {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+
+nav#menu ul {
+    display: flex;
+    flex-direction: row;
+    z-index: -1;
+}
+
+nav#menu ul li {
+    display: block;
+    padding: 20px;
+}
+
+#portada {
+    color: white;
+    height: 100vh;
+    background-image: url(./assets/portada.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+#portada header {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+}
+
+section#portada::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    opacity: 0.2;
+}
+
+#portada h2, #portada h3 {
+    font-size: 3rem;
+    text-shadow: 4px 4px 4px black;
+}
+#portada header h3 {
+    font-size: 2rem;
+}
+#portada hr {
+    box-shadow: 3px 3px 2px black;
+}
+
+#section-wrapper {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 60%;
+    max-width: 700px;
+}
+
+.fa-stack {
+    color: #777777;
+}
+
+body > footer {
+    color: black;
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+}
+
+.arriba {
+    position: fixed;
+    top: 0;
+    background: rgba(240,240,240,0.8);
+}
+.oculto {
+    display: none;
+}
+
+p, h2, h3 {
+    margin: 10px 0px;
+}
