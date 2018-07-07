@@ -21,9 +21,6 @@ export class Main {
 
         this.btnInicio = document.querySelector("#btn-inicio");
 
-
-        console.log(this.secciones);
-
         this.offsets = []
 
         this.defineEventListeners()
@@ -43,41 +40,39 @@ export class Main {
             })
         })
         */
+
         this.navSecciones.forEach(enlaceSeccion => {
             enlaceSeccion.addEventListener('click', (event) => {
                 this.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
             })
         });
 
+        // Volver al inicio de la página
         this.btnInicio.addEventListener('click', (event) => {
             this.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
         })
 
+        // Desplegar/replegar menú lateral
         this.menuIcon.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (this.menu.classList.contains('menu-visible')) {
-                this.menu.classList.remove('menu-visible')
-                this.menu.classList.add('menu-oculto')
-            }
-            else {
-                this.menu.classList.remove('menu-oculto')
-                this.menu.classList.add('menu-visible')
-            }
+            event.stopPropagation();
+            this.menu.classList.toggle('menu-visible');
+            event.target.classList.remove('active');
         })
 
+        
+        // Recalcular las posiciones de las secciones al cambiar el tamaño de la pantalla o la orientación
         window.addEventListener('resize', this.prepararNavegacion.bind(this))
-        window.addEventListener('scroll', this.changeMenuStyle.bind(this))
-
         window.addEventListener('orientationchange', this.prepararNavegacion.bind(this));
 
+        // Seleccionar la sección activa en el menú al hacer scroll
+        window.addEventListener('scroll', this.changeMenuStyle.bind(this))
+
+        // Cerrar menú lateral si está desplegado, al hacer click fuera del mismo
+        document.body.addEventListener('click', this.cerrarMenu.bind(this))
     }
 
     verOlderPosts(oE) {
         console.dir(oE)
-    }
-
-    toggleMenu() {
-        document.querySelector('#top-menu').classList.toggle('menu-top')
     }
 
     probarInput(oE) {
@@ -88,6 +83,13 @@ export class Main {
             console.log('input')
             console.dir(oE.target.value)
         }
+    }
+
+    cerrarMenu(event) {
+        event.stopPropagation();
+        const tipoNodo = event.target.nodeName;
+        if (this.menu.classList.contains('menu-visible') && tipoNodo != 'A' && tipoNodo != 'I')
+            this.menu.classList.remove('menu-visible');
     }
 
     changeMenuStyle () {
@@ -168,9 +170,8 @@ export class Main {
             scrollTo(0, stopY); return;
         }
         let speed = Math.round(distance / 100);
-        console.log(speed);
         if (speed >= 20) speed = 20;
-        let step = Math.round(distance / 30);
+        let step = Math.round(distance / 25);
         let leapY = stopY > startY ? startY + step : startY - step;
         let timer = 0;
         if (stopY > startY) {

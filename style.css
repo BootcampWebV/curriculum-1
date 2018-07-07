@@ -44,10 +44,13 @@ body > header {
     color: royalblue;
     transition: all 0.2s linear;
 }
-
+.fa-stack:active {
+    color: var(--color-texto);
+    transition: all 0.2s linear;
+}
 .menu-icon ul li a {
     display: block;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: var(--color-texto);
 }
 
@@ -65,13 +68,24 @@ body > header {
 
     display: flex;
     justify-content: center;
+
+
+    right: 0;
+    width: 0px;
+    min-width: 0px;
+    overflow: hidden;
+
+    transition: all 0.15s linear;
+
+
 }
 
 .menu-principal ul {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
     z-index: 0;
 }
 
@@ -80,9 +94,10 @@ body > header {
 }
 .menu-principal ul li a {
     right: 1rem;
+    width: 100%;
     display: block;
     padding: 0.6rem 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--color-texto);
 }
 
@@ -116,6 +131,15 @@ section.home header {
     text-align: center;
     transform: translate(-50%, -50%);
     font-size: 4rem;
+}
+
+.nombre {
+    animation: titulo-nombre 1s linear;
+    animation-fill-mode: forwards;    
+}
+.curriculum {
+    animation: titulo-curriculum 1s linear;
+    animation-fill-mode: forwards;    
 }
 
 section.home::after {
@@ -167,7 +191,7 @@ body > footer {
     z-index: 2;
 }
 .btn-volver {
-    font-size: 0.6rem;    
+    font-size: 0.7rem;    
     z-index: 0;
 }
 
@@ -176,10 +200,9 @@ body > footer {
 }
 
 .menu-visible {
-    right: 0;
-}
-.menu-oculto {
-    left: 100vh;
+    width: 25vw;
+    min-width: 10rem;
+    transition: all 0.15s linear;
 }
 
 .active {
@@ -207,6 +230,7 @@ body > footer {
         color: white;
         text-shadow: 2px 2px 4px black;
         opacity: 0.95;
+        transition: none;
     }
     
     .menu-principal ul {
@@ -236,3 +260,34 @@ body > footer {
     }
         
 }
+
+@keyframes titulo-nombre {
+    0% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0);
+    }
+    50% {
+        opacity: 0.1;
+        transform: translateY(-50vh) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes titulo-curriculum {
+    0% {
+        opacity: 0;
+        transform: translateX(-100vw) scale(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(-60vw) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+

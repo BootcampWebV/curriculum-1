@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="./js/app.js" type="module"></script>
+    
 </head>
 
 <body>
     <header>
-        <nav id="menu" class="menu-principal menu-oculto">
+        <nav id="menu" class="menu-principal">
             <ul>
                 <li>
                     <a id="link-home" href="#home" data-enlace="home" class="active">Home</a>
@@ -50,17 +51,17 @@
                 </li>
             </ul>
         </nav>
-        </header>
+    </header>
     <main>
-        <section id="home" class="home scrollable active">
+        <section id="home" class="home active">
             <header>
-                <h1>Miguel Angel Otero Prado</h1>
+                <h1 class="nombre">Miguel Angel Otero Prado</h1>
                 <div class="separador"></div>
-                <h2>Currículum Vitae</h2>
+                <h2 class="curriculum">Currículum Vitae</h2>
             </header>
         </section>
         <div id="section-wrapper">
-            <section id="quien-soy" class="scrollable">
+            <section id="quien-soy">
                 <header>
                     <h1 class="titulo">Quién soy</h1>
                 </header>
@@ -81,7 +82,7 @@
                     deserunt.
                 </p>
                 </section>
-            <section id="estudios" class="scrollable">
+            <section id="estudios">
                 <header>
                     <h1 class="titulo">Estudios</h1>
                 </header>
@@ -102,7 +103,7 @@
                     deserunt.
                 </p>
                 </section>
-            <section id="experiencia" class="scrollable">
+            <section id="experiencia">
                 <header>
                     <h1 class="titulo">Experiencia</h1>
                 </header>
@@ -123,7 +124,7 @@
                     deserunt.
                 </p>
                 </section>
-            <section id="sobre-mi" class="scrollable">
+            <section id="sobre-mi">
                 <header>
                     <h1 class="titulo">Sobre mí</h1>
                 </header>
@@ -144,7 +145,7 @@
                     deserunt.
                 </p>
                 </section>
-            <section id="contacto" class="scrollable">
+            <section id="contacto">
                 <header>
                     <h1 class="titulo">Contacto</h1>
                 </header>
@@ -164,7 +165,43 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-                </section>
+                <form name="form-contacto" action="#" method="POST">
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                    </div>
+                    <div>
+                        <label for="correo">Email</label>
+                        <input type="email" id="correo" name="correo" placeholder="Email">
+                    </div>
+                    <div>
+                        <label for="como-conocido"></label>
+                        <select id="como-conocido" name="como-conocido">
+                            <option value="google">Google</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="amigo">A través de un amigo</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" class="oculto" id="como-conocido-otros" name="como-conocido-otros" placeholder="otros">
+                    </div>
+                    <div>
+                        <label for="numero">Número de contacto</label>
+                        <input type="text" id="numero" name="numero" placeholder="Número de Contacto">
+                    </div>
+                    <div>
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="mensaje"></textarea>
+                    </div>
+                    <div>
+                        <button type="reset" id="borrar">Reset</button>
+                        <button type="submit" id="enviar">Enviar</button>
+                    </div>
+                </form>               
+
+            </section>
         </div>
     </main>
     <footer>
