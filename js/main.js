@@ -91,8 +91,8 @@ export class Main {
     }
 
     changeMenuStyle () {
-        let desplazamiento = 10
-        let pageOffset = window.pageYOffset + (window.innerHeight / desplazamiento)
+        let desplazamiento = 5
+        let pageOffset = window.pageYOffset + Math.max(100, window.innerHeight / desplazamiento); // + (window.innerHeight / desplazamiento)
         let menuItem = 0
         if (pageOffset >=  this.offsets['#home'] && pageOffset < this.offsets['#quien-soy']) {
             menuItem = 0
@@ -119,7 +119,6 @@ export class Main {
         else {
             this.btnInicio.classList.add('oculto');
         }
-    
     }
 
     prepararNavegacion() {
@@ -129,7 +128,6 @@ export class Main {
                 this.offsets['#'+item.id] = cumulative;
             }
         )
-        console.log(this.offsets);
     }
 
     cumulativeOffset (element) {
@@ -138,7 +136,7 @@ export class Main {
             top += element.offsetTop || 0;
             element = element.offsetParent;
         } while(element);
-        return top - 60; // - 100;
+        return top; // - (window.innerWidth >= 900 ? 60 : 0); // - 100;
     };
 
     currentYPosition() {
@@ -158,7 +156,8 @@ export class Main {
         while (node.offsetParent && node.offsetParent != document.body) {
             node = node.offsetParent;
             y += node.offsetTop;
-        } return y - 60;
+        } 
+        return y - (window.innerWidth >= 900 ? 60 : 10);
     }
     
     smoothScroll(eID) {

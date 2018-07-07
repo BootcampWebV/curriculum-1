@@ -28,6 +28,7 @@ body {
 a {
 	text-decoration: none;
 	color: inherit;
+	outline: none;
 }
 
 article, aside, details, figcaption, figure, 

@@ -27,16 +27,22 @@ body > header {
 }
 
 
-
-
 /******************************************************/
 
 
 .menu-icon {
     position: fixed;
-    right: 0.7rem;    
-    top: 0.5rem;
+    right: 0.5rem;    
+    top: 0.3rem;
     z-index: 1;
+}
+
+.fa-stack {
+    transition: all 0.2s linear;
+}
+.fa-stack:hover {
+    color: royalblue;
+    transition: all 0.2s linear;
 }
 
 .menu-icon ul li a {
@@ -44,8 +50,6 @@ body > header {
     font-size: 0.6rem;
     color: var(--color-texto);
 }
-
-
 
 .menu-principal {
     position: fixed;
@@ -66,8 +70,9 @@ body > header {
 .menu-principal ul {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    z-index: -1;
+    justify-content: flex-start;
+    margin-top: 3rem;
+    z-index: 0;
 }
 
 .menu-principal ul li {
@@ -80,9 +85,6 @@ body > header {
     font-size: 1rem;
     color: var(--color-texto);
 }
-
-
-
 
 
 
@@ -138,11 +140,17 @@ section.home hr {
     box-shadow: 3px 3px 2px black;
 }
 
+.separador {
+    margin: 1rem 2rem;
+    border-bottom: 2px solid var(--color-texto);
+    box-shadow: 3px 3px 2px black;
+}
+
 #section-wrapper {
     position: relative;
     margin: 0 auto;
     display: block;
-    width: 80%;
+    width: 90%;
     max-width: 700px;
 }
 
@@ -154,24 +162,15 @@ section.home hr {
 body > footer {
     color: black;
     position: fixed;
-    bottom: 0.5rem;
-    right: 0.7rem;
-    font-size: 0.8rem;
+    bottom: 0.4rem;
+    right: 0.4rem;
     z-index: 2;
 }
 .btn-volver {
-    font-size: 0.6rem;
-    z-index: 3;
+    font-size: 0.6rem;    
+    z-index: 0;
 }
 
-/*
-.arriba {
-    position: fixed;
-    top: 0;
-    background-color: #333339;
-    box-shadow: 4px 1px 6px black;
-}
-*/
 .oculto {
     display: none;
 }
@@ -215,6 +214,7 @@ body > footer {
         flex-direction: row;
         justify-content: center;
         z-index: -1;
+        margin-top: 0;
     }
     
     .menu-principal ul li {
