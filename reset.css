@@ -35,7 +35,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
-nav ul, form ul {
+nav ul, form ul, footer ul {
 	list-style: none;
 }
 

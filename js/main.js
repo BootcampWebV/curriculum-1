@@ -65,7 +65,10 @@ export class Main {
             }
         })
 
+        window.addEventListener('resize', this.prepararNavegacion.bind(this))
         window.addEventListener('scroll', this.changeMenuStyle.bind(this))
+
+        window.addEventListener('orientationchange', this.prepararNavegacion.bind(this));
 
     }
 

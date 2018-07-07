@@ -34,28 +34,16 @@ body > header {
 
 .menu-icon {
     position: fixed;
-    right: 1rem;    
-    top: 1rem;
+    right: 0.7rem;    
+    top: 0.5rem;
     z-index: 1;
 }
 
 .menu-icon ul li a {
     display: block;
-    font-size: 0.8rem;
-    /*background-color: #303036;*/
+    font-size: 0.6rem;
     color: var(--color-texto);
 }
-
-
-
-
-
-.derecha {
-    position: fixed;
-    left: 100vw;
-}
-
-
 
 
 
@@ -88,7 +76,7 @@ body > header {
 .menu-principal ul li a {
     right: 1rem;
     display: block;
-    padding: 1rem 1rem;
+    padding: 0.6rem 1rem;
     font-size: 1rem;
     color: var(--color-texto);
 }
@@ -154,7 +142,7 @@ section.home hr {
     position: relative;
     margin: 0 auto;
     display: block;
-    width: 60%;
+    width: 80%;
     max-width: 700px;
 }
 
@@ -165,16 +153,14 @@ section.home hr {
 
 body > footer {
     color: black;
-    width: 2rem;
-    height: 2rem;
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 0.5rem;
+    right: 0.7rem;
     font-size: 0.8rem;
     z-index: 2;
 }
 .btn-volver {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     z-index: 3;
 }
 
@@ -199,6 +185,12 @@ body > footer {
 
 .active {
     background-color: royalblue;
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .menu-oculto {
+        left: 100vw;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -238,4 +230,9 @@ body > footer {
     .menu-icon {
         display: none;
     }
+    #section-wrapper {
+        width: 650%;
+        max-width: 700px;
+    }
+        
 }
