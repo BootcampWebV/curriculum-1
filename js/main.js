@@ -1,3 +1,4 @@
+import { FormContacto} from './form-contacto.js'
 export class Main {
 
     constructor () {

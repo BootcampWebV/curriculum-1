@@ -100,6 +100,10 @@ body > header {
     font-size: 1.2rem;
     color: var(--color-texto);
 }
+.menu-principal ul li a:hover {
+    background-color: rgba(65, 105, 225, 0.8);
+    opacity: 0.9;
+}
 
 .menu-visible {
     width: 30vw;
@@ -108,9 +112,7 @@ body > header {
 }
 
 
-
 /************************************************/
-
 
 
 section {
@@ -174,6 +176,12 @@ section.home hr {
     margin: 1rem 2rem;
     border-bottom: 2px solid var(--color-texto);
     box-shadow: 3px 3px 2px black;
+}
+
+section header i {
+    font-size: 2rem;
+    float: left;
+    margin-right: 15px;
 }
 
 #section-wrapper {
@@ -291,3 +299,55 @@ body > footer {
     }
 }
 
+/* FORMULARIO */
+.form-contacto {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 2fr;
+}
+
+input, select, textarea {
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background-color: white;
+    font-family: "Montserrat";
+    font-size: 1rem;
+}
+label {
+    justify-self: start;
+    align-self: center;
+}
+
+#como-conocido-otros {
+    grid-column: 2 / 3;
+}
+label.top {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+.btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    grid-column: 2 / 3;
+}
+button {
+    font-family: "Montserrat";
+    font-size: 1.2rem;
+    color: var(--color-texto);
+    background-color: rgba(65, 105, 225, 0.9);
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 0.6rem 2rem;
+    margin-left: 1rem;
+    outline: none;
+}
+button:hover {
+    background-color: royalblue;
+    cursor: pointer;
+
+}
+option {
+    min-height: 2rem;
+}

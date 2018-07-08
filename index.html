@@ -63,6 +63,7 @@
         <div id="section-wrapper">
             <section id="quien-soy">
                 <header>
+                    <i class="fas fa-user-alt"></i>
                     <h1 class="titulo">Quién soy</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
@@ -106,6 +107,7 @@
                 </section>
             <section id="experiencia">
                 <header>
+                    <i class="fas fa-user-tie"></i>
                     <h1 class="titulo">Experiencia</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
@@ -127,6 +129,7 @@
                 </section>
             <section id="sobre-mi">
                 <header>
+                    <i class="fas fa-laugh"></i>
                     <h1 class="titulo">Sobre mí</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
@@ -148,6 +151,7 @@
                 </section>
             <section id="contacto">
                 <header>
+                    <i class="fas fa-envelope"></i>                    
                     <h1 class="titulo">Contacto</h1>
                 </header>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
@@ -166,40 +170,39 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-                <form name="form-contacto" action="#" method="POST">
-                    <div>
+                <form class="form-contacto" name="form-contacto" action="#" method="POST">
+                    
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                    </div>
-                    <div>
+                    
+                    
                         <label for="correo">Email</label>
                         <input type="email" id="correo" name="correo" placeholder="Email">
-                    </div>
-                    <div>
-                        <label for="como-conocido"></label>
+                    
+
+                        <label for="como-conocido">Cómo me has conocido</label>
                         <select id="como-conocido" name="como-conocido">
                             <option value="google">Google</option>
                             <option value="facebook">Facebook</option>
                             <option value="instagram">Instagram</option>
                             <option value="amigo">A través de un amigo</option>
-                            <option value="otros">Otros</option>
+                            <option selected value="otros">Otros</option>
                         </select>
-                    </div>
-                    <div>
-                        <input type="text" class="oculto" id="como-conocido-otros" name="como-conocido-otros" placeholder="otros">
-                    </div>
-                    <div>
+                    
+                        <input type="text" class="//oculto" id="como-conocido-otros" name="como-conocido-otros" placeholder="Cómo me has conocido...">
+                    
+                    
                         <label for="numero">Número de contacto</label>
                         <input type="text" id="numero" name="numero" placeholder="Número de Contacto">
-                    </div>
-                    <div>
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" placeholder="mensaje"></textarea>
-                    </div>
-                    <div>
-                        <button type="reset" id="borrar">Reset</button>
-                        <button type="submit" id="enviar">Enviar</button>
-                    </div>
+                    
+                    
+                        <label for="mensaje" class="top">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Introduce el mensaje..."></textarea>
+                    
+                        <div class="btn-wrapper">
+                            <button type="reset" id="borrar">Reset</button>
+                            <button type="submit" id="enviar">Enviar</button>
+                        </div>
                 </form>               
 
             </section>
