@@ -54,12 +54,11 @@ export class Main {
 
         // Desplegar/replegar menú lateral
         this.menuIcon.addEventListener('click', (event) => {
+            event.preventDefault();
             event.stopPropagation();
             this.menu.classList.toggle('menu-visible');
-            event.target.classList.remove('active');
         })
 
-        
         // Recalcular las posiciones de las secciones al cambiar el tamaño de la pantalla o la orientación
         window.addEventListener('resize', this.prepararNavegacion.bind(this))
         window.addEventListener('orientationchange', this.prepararNavegacion.bind(this));
