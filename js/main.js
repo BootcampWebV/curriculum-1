@@ -1,9 +1,10 @@
-import { FormContact } from './form-contact.js'
+import { ContactForm } from './contact-form.js'
+
 export class Main {
 
     constructor () {
 
-        this.oFormContact = new FormContact()
+        this.oFormContact = new ContactForm()
 
         this.menu = document.querySelector("#menu");
 
