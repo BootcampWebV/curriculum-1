@@ -170,40 +170,41 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-                <form class="form-contacto" name="form-contacto" action="#" method="POST">
-                    
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                    
-                    
-                        <label for="correo">Email</label>
-                        <input type="email" id="correo" name="correo" placeholder="Email">
-                    
 
-                        <label for="como-conocido">Cómo me has conocido</label>
-                        <select id="como-conocido" name="como-conocido">
-                            <option value="google">Google</option>
-                            <option value="facebook">Facebook</option>
-                            <option value="instagram">Instagram</option>
-                            <option value="amigo">A través de un amigo</option>
-                            <option selected value="otros">Otros</option>
-                        </select>
+                <form class="form-contact" id="form-contact" action="#" method="POST" novalidate>
                     
-                        <input type="text" class="//oculto" id="como-conocido-otros" name="como-conocido-otros" placeholder="Cómo me has conocido...">
-                    
-                    
-                        <label for="numero">Número de contacto</label>
-                        <input type="text" id="numero" name="numero" placeholder="Número de Contacto">
-                    
-                    
-                        <label for="mensaje" class="top">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" placeholder="Introduce el mensaje..."></textarea>
-                    
-                        <div class="btn-wrapper">
-                            <button type="reset" id="borrar">Reset</button>
-                            <button type="submit" id="enviar">Enviar</button>
-                        </div>
-                </form>               
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" placeholder="Nombre" required>
+                
+                
+                    <label for="email">Email</label>
+                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" placeholder="Email">
+                
+
+                    <label for="como-conocido">Cómo me has conocido</label>
+                    <select id="como-conocido" name="como-conocido">
+                        <option value="" disabled selected>Seleccionar...</option>
+                        <option value="google">Google</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="amigo">A través de un amigo</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                
+                    <input type="text" class="oculto" id="como-conocido-otros" name="como-conocido-otros" placeholder="Cómo me has conocido...">
+                
+                    <label for="contactNumber">Número de contacto</label>
+                    <input type="text" pattern="^\d{9}$" id="contactNumber" name="contactNumber" placeholder="Número de Contacto">
+                
+                
+                    <label for="mensaje" class="top">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Introduce el mensaje..."></textarea>
+                
+                    <div class="btn-wrapper">
+                        <button type="reset" id="borrar">Reset</button>
+                        <button type="submit" id="enviar">Enviar</button>
+                    </div>
+                </form>
 
             </section>
         </div>

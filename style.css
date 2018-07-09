@@ -40,9 +40,11 @@ body > header {
 .fa-stack {
     transition: all 0.2s linear;
 }
-.fa-stack:hover {
-    color: royalblue;
-    transition: all 0.2s linear;
+@media (hover: hover) {
+    .fa-stack:hover {
+        color: royalblue;
+        transition: all 0.2s linear;
+    }
 }
 .fa-stack:active {
     color: var(--color-texto);
@@ -96,18 +98,24 @@ body > header {
     right: 1rem;
     width: 100%;
     display: block;
-    padding: 0.6rem 1rem;
+    padding: 0.7rem 1.2rem;
     font-size: 1.2rem;
     color: var(--color-texto);
+
+    transition: transform 0.15s linear;
 }
-.menu-principal ul li a:hover {
-    background-color: rgba(65, 105, 225, 0.8);
-    opacity: 0.9;
+
+@media (hover: hover) {
+    .menu-principal ul li a:hover {
+        background-color: rgba(65, 105, 225, 0.8);
+        opacity: 0.9;
+        transform: scale(1.1);    
+    }
 }
 
 .menu-visible {
     width: 30vw;
-    min-width: 11rem;
+    min-width: 12rem;
     transition: all 0.15s linear;
 }
 
@@ -211,10 +219,105 @@ body > footer {
 
 .oculto {
     display: none;
+    opacity: 0;
+    transition: all 0.9s linear;
 }
 
 .active {
     background-color: royalblue;
+}
+
+@keyframes titulo-nombre {
+    0% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0);
+    }
+    50% {
+        opacity: 0.1;
+        transform: translateY(-50vh) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes titulo-curriculum {
+    0% {
+        opacity: 0;
+        transform: translateX(-100vw) scale(0);
+    }
+    50% {
+        opacity: 0.1;
+        transform: translate(-60vw) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* FORMULARIO */
+.form-contact {
+    display: grid;
+    width: 100%;
+    grid-gap: 0.8rem;
+    grid-template-columns: minmax(20%, 10rem) minmax(auto, 1fr)
+}
+input, select, textarea {
+    padding: 8px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background-color: white;
+    font-family: "Montserrat";
+    font-size: 1rem;
+    grid-column: 2 / 3;
+}
+label {
+    align-self: center;
+    font-size: 0.9rem;
+}
+
+#como-conocido-otros {
+    grid-column: 2 / 3;
+}
+label.top {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+.btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    grid-column: 2 / 3;
+}
+button {
+    font-family: "Montserrat";
+    font-size: 1.2rem;
+    color: var(--color-texto);
+    background-color: rgba(65, 105, 225, 0.9);
+    border: 1px solid royalblue;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    outline: none;
+    transition: transform 0.15s linear;
+}
+button:hover {
+    background-color: royalblue;
+    cursor: pointer;
+    transform: scale(1.07);
+}
+button[type="reset"] {
+    background-color: rgba(20,90,20,1);
+    border: 1px solid rgba(30,120,30,1);
+}
+button[type="reset"]:hover {
+    background-color: rgba(30,120,30,1);
+}
+
+option {
+    min-height: 2rem;
 }
 
 @media (max-width: 900px) and (orientation: landscape) {
@@ -266,88 +369,14 @@ body > footer {
         width: 650%;
         max-width: 700px;
     }
+
+    /* Formulario */
+
+    .form-contact {
+        grid-gap: 0.7rem;
+    }
+    button {
+        padding: 0.5rem 2rem;
+    }
         
-}
-
-@keyframes titulo-nombre {
-    0% {
-        opacity: 0;
-        transform: translateY(-100vh) scale(0);
-    }
-    50% {
-        opacity: 0.1;
-        transform: translateY(-50vh) scale(0.5);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes titulo-curriculum {
-    0% {
-        opacity: 0;
-        transform: translateX(-100vw) scale(0);
-    }
-    50% {
-        opacity: 0.1;
-        transform: translate(-60vw) scale(0.5);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-    }
-}
-
-/* FORMULARIO */
-.form-contacto {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 1fr 2fr;
-}
-
-input, select, textarea {
-    padding: 10px;
-    border: 1px solid grey;
-    border-radius: 3px;
-    background-color: white;
-    font-family: "Montserrat";
-    font-size: 1rem;
-}
-label {
-    justify-self: start;
-    align-self: center;
-}
-
-#como-conocido-otros {
-    grid-column: 2 / 3;
-}
-label.top {
-    align-self: flex-start;
-    margin-top: 0.5rem;
-}
-.btn-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    grid-column: 2 / 3;
-}
-button {
-    font-family: "Montserrat";
-    font-size: 1.2rem;
-    color: var(--color-texto);
-    background-color: rgba(65, 105, 225, 0.9);
-    border: 1px solid gray;
-    border-radius: 3px;
-    padding: 0.6rem 2rem;
-    margin-left: 1rem;
-    outline: none;
-}
-button:hover {
-    background-color: royalblue;
-    cursor: pointer;
-
-}
-option {
-    min-height: 2rem;
 }

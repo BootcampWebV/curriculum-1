@@ -1,16 +1,9 @@
-import { FormContacto} from './form-contacto.js'
+import { FormContact } from './form-contact.js'
 export class Main {
 
     constructor () {
-        // enlaces a secciones del menú de navegación
-        /*
-        this.linkHome = document.querySelector('#link-home')
-        this.linkQuienSoy =  document.querySelector('#link-quien-soy')
-        this.linkEstudios =  document.querySelector('#link-estudios')
-        this.linkExperiencia =  document.querySelector('#link-experiencia')
-        this.linkSobreMi =  document.querySelector('#link-sobre-mi')
-        this.linkContacto =  document.querySelector('#link-contacto')
-        */
+
+        this.oFormContact = new FormContact()
 
         this.menu = document.querySelector("#menu");
 
@@ -22,6 +15,7 @@ export class Main {
 
         this.btnInicio = document.querySelector("#btn-inicio");
 
+        // Posiciones de inicio en el scroll para cada sección
         this.offsets = []
 
         this.defineEventListeners()
@@ -65,10 +59,10 @@ export class Main {
         window.addEventListener('orientationchange', this.prepararNavegacion.bind(this));
 
         // Seleccionar la sección activa en el menú al hacer scroll
-        window.addEventListener('scroll', this.changeMenuStyle.bind(this))
+        window.addEventListener('scroll', this.changeActiveMenuItem.bind(this))
 
         // Cerrar menú lateral si está desplegado, al hacer click fuera del mismo
-        document.body.addEventListener('click', this.cerrarMenu.bind(this))
+        document.body.addEventListener('click', this.closeMenu.bind(this))
     }
 
     verOlderPosts(oE) {
@@ -85,16 +79,17 @@ export class Main {
         }
     }
 
-    cerrarMenu(event) {
+    closeMenu(event) {
         event.stopPropagation();
         const tipoNodo = event.target.nodeName;
         if (this.menu.classList.contains('menu-visible') && tipoNodo != 'A' && tipoNodo != 'I')
             this.menu.classList.remove('menu-visible');
     }
-
-    changeMenuStyle () {
+    
+    changeActiveMenuItem () {
+        // Calcular en qué sección está el scroll
         let desplazamiento = 5
-        let pageOffset = window.pageYOffset + Math.max(100, window.innerHeight / desplazamiento); // + (window.innerHeight / desplazamiento)
+        let pageOffset = window.pageYOffset + Math.max(100, window.innerHeight / desplazamiento) // + (window.innerHeight / desplazamiento)
         let menuItem = 0
         if (pageOffset >=  this.offsets['#home'] && pageOffset < this.offsets['#quien-soy']) {
             menuItem = 0
@@ -109,12 +104,13 @@ export class Main {
         } else {
             menuItem = 5
         }
-
+        // Desactivar todas las secciones del menú y activar sólo en la que está el scroll
         this.navSecciones.forEach(
             (item) => item.classList.remove('active')
         )
         this.navSecciones[menuItem].classList.add('active')
 
+        // Si el scroll no está en el inicio de la página, mostrar el botón Inicio
         if (window.pageYOffset > 100) {
             this.btnInicio.classList.remove('oculto');
         }
@@ -142,8 +138,8 @@ export class Main {
     };
 
     currentYPosition() {
-        if (self.pageYOffset) 
-            return self.pageYOffset;
+        if (this.pageYOffset) 
+            return this.pageYOffset;
         if (document.documentElement && document.documentElement.scrollTop)
             return document.documentElement.scrollTop;
         if (document.body.scrollTop) 
@@ -167,7 +163,8 @@ export class Main {
         let stopY = this.elmYPosition(eID);
         let distance = stopY > startY ? stopY - startY : startY - stopY;
         if (distance < 100) {
-            scrollTo(0, stopY); return;
+            scrollTo(0, stopY); 
+            return;
         }
         let speed = Math.round(distance / 100);
         if (speed >= 20) speed = 20;
@@ -181,7 +178,8 @@ export class Main {
                 if (leapY > stopY) 
                     leapY = stopY; 
                 timer++;
-            } return;
+            } 
+            return;
         }
         for (let i = startY; i > stopY; i -= step) {
             setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
