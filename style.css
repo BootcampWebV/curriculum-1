@@ -1,3 +1,5 @@
+/* Variables */
+
 :root {
     --color-texto: white;
 }
@@ -14,12 +16,7 @@ p, h1, h2, h3 {
     margin: 10px 0px;
 }
 
-h1.titulo {
-    font-size: 2rem;
-    margin: 2rem 0;
-}
-
-/*******************************************************/
+/* Cabecera */
 
 body > header {
     position: fixed;
@@ -40,21 +37,17 @@ body > header {
 }
 
 body > header > h1 {
-    font-weight: lighter;
+    font-weight: 100;
     line-height: 1.5rem;
 }
-/******************************************************/
 
-.menu-icon {
-    position: fixed;
-    right: 0.5rem;    
-    top: 0.3rem;
-    z-index: 2;
-}
+/* Botones con iconos */
 
 .fa-stack {
     transition: all 0.2s linear;
+    color: #333339;
 }
+
 @media (hover: hover) {
     .fa-stack:hover {
         color: royalblue;
@@ -65,11 +58,23 @@ body > header > h1 {
     color: var(--color-texto);
     transition: all 0.2s linear;
 }
+
+/* Botón desplegar/replegar menú */
+
+.menu-icon {
+    position: fixed;
+    right: 0.5rem;    
+    top: 0.3rem;
+    z-index: 2;
+}
+
 .menu-icon ul li a {
     display: block;
     font-size: 0.7rem;
     color: var(--color-texto);
 }
+
+/*** MENÚ ***************/
 
 .menu-principal {
     position: fixed;
@@ -131,12 +136,16 @@ body > header > h1 {
 }
 
 
-/************************************************/
-
+/* SECCIONES **************************************/
 
 section {
     border-bottom: 1px solid grey;
     padding-bottom: 2rem;
+}
+
+h1.titulo {
+    font-size: 2rem;
+    margin: 2rem 0;
 }
 
 /* PORTADA */
@@ -160,140 +169,9 @@ section.home header {
     font-size: 4rem;
 }
 
-.nombre {
+.portada-nombre.animated {
     animation: titulo-nombre 1s linear;
     animation-fill-mode: forwards;    
-}
-.curriculum {
-    animation: titulo-curriculum 1s linear;
-    animation-fill-mode: forwards;    
-}
-
-section.home::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100vh;
-    background-color: white;
-    opacity: 0.2;
-}
-
-section.home h1, section.home h2 {
-    font-size: 3rem;
-    text-shadow: 4px 4px 4px black;
-}
-section.home header h2 {
-    font-size: 2rem;
-}
-section.home hr {
-    box-shadow: 3px 3px 2px black;
-}
-
-.separador {
-    margin: 1rem 2rem;
-    border-bottom: 2px solid var(--color-texto);
-    box-shadow: 3px 3px 2px black;
-}
-
-section header i {
-    font-size: 2rem;
-    float: left;
-    margin-right: 15px;
-}
-
-#sections-wrapper {
-    position: relative;
-    margin: 0 auto;
-    display: block;
-    width: 90%;
-    max-width: 800px;
-}
-
-/* Mensaje de Error */
-
-.section-error-message {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(32, 32, 32, 0.9);
-    z-index: 3;
-    
-}
-.header-error-message {
-    position: fixed;
-    top: 5rem;
-    left: 3rem;
-    right: 3rem;
-    padding: 0.4rem 1rem;
-    color: white;
-    background-color: lightcoral;
-    border: 1px solid maroon;
-    border-radius: 4px;
-    box-shadow: 1px 1px 5px black;
-    
-    transition: opacity 0.4s linear;
-
-    opacity: 1;
-}
-.header-error-message h2 {
-    font-size: 1.5rem;
-    line-height: 1.7rem;
-    padding-right: 1.5rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px black;
-}
-
-.header-error-message button {
-    position: absolute;
-    cursor: pointer;
-    top: 0.3rem;
-    right: 0.4rem;
-    color: maroon;
-    background-color: white;
-    font-weight: bold;
-    border: 1px solid maroon;
-    padding: 0.15rem 0.3rem;
-}
-
-.error-oculto {
-    opacity: 0;
-    z-index: 0;
-}
-.texto-error-oculto {
-    opacity: 0;
-    transition: opacity 0.4s linear;
-}
-
-/* Botón volver */
-.fa-stack {
-    color: #333339;
-}
-
-body > footer {
-    color: black;
-    position: fixed;
-    bottom: 0.4rem;
-    right: 0.4rem;
-    z-index: 2;
-    margin-top: 1rem;
-}
-.btn-volver {
-    font-size: 0.7rem;    
-    z-index: 2;
-}
-
-.oculto {
-    display: none;
-    opacity: 0;
-    transition: all 0.9s linear;
-}
-
-.active {
-    background-color: royalblue;
 }
 
 @keyframes titulo-nombre {
@@ -311,6 +189,11 @@ body > footer {
     }
 }
 
+.portada-curriculum.animated {
+    animation: titulo-curriculum 1s linear;
+    animation-fill-mode: forwards;    
+}
+
 @keyframes titulo-curriculum {
     0% {
         opacity: 0;
@@ -326,7 +209,90 @@ body > footer {
     }
 }
 
+section.home::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: white;
+    opacity: 0.2;
+}
+
+section.home h1, section.home h2 {
+    font-size: 2rem;
+    text-shadow: 4px 4px 4px black;
+}
+section.home header h2 {
+    font-size: 3rem;
+}
+section.home hr {
+    box-shadow: 3px  2px black;
+}
+
+section header i {
+    font-size: 2rem;
+    float: left;
+    margin-right: 15px;
+}
+
+/* Wrapper para las secciones */
+
+#sections-wrapper {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 90%;
+    max-width: 800px;
+}
+
+/* Botón ir al inicio */
+
+body > footer {
+    color: black;
+    position: fixed;
+    bottom: 0.4rem;
+    right: 0.4rem;
+    z-index: 2;
+    margin-top: 1rem;
+}
+.btn-volver {
+    font-size: 0.7rem;    
+    z-index: 2;
+}
+
+/* Redes sociales */
+
+.redes-sociales ul {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+.redes-sociales ul li  {
+    margin: 0 0.5rem;
+}
+.redes-sociales a span, 
+.redes-sociales .fa-linkedin,
+.redes-sociales .fa-github,
+.redes-sociales .fa-twitter,
+.redes-sociales .fa-google-plus-g 
+{
+    font-size: 2rem;
+}
+
+.oculto {
+    display: none;
+    opacity: 0;
+    transition: all 0.9s linear;
+}
+
+.active {
+    background-color: royalblue;
+}
+
 /* FORMULARIO */
+
 .form-contact {
     display: grid;
     width: 100%;
@@ -397,7 +363,68 @@ option {
     }
 }
 
+/* Mensaje de Error */
+
+.section-error-message {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(32, 32, 32, 0.9);
+    z-index: 3;
+    
+}
+.header-error-message {
+    position: fixed;
+    top: 5rem;
+    left: 3rem;
+    right: 3rem;
+    padding: 0.4rem 1rem;
+    color: white;
+    background-color: rgb(243, 92, 92);
+    border: 1px solid maroon;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px black;
+    
+    transition: opacity 0.4s linear;
+
+    opacity: 1;
+}
+.header-error-message h2 {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    padding-right: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+}
+
+.header-error-message button {
+    position: absolute;
+    cursor: pointer;
+    top: 0.4rem;
+    right: 0.5rem;
+    color: maroon;
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid maroon;
+    padding: 0.15rem 0.3rem;
+}
+
+.error-oculto {
+    opacity: 0;
+    z-index: 0;
+}
+.texto-error-oculto {
+    opacity: 0;
+    transition: opacity 0.4s linear;
+}
+
+/** Mediaquery para escritorio **/
+
 @media screen and (min-width: 900px) {
+
+    /* Portada */
 
     body > header {
         height: 3rem;
@@ -408,6 +435,8 @@ option {
     body > header  > h1 {
         font-size: 0.9rem;
     }
+
+    /* Menú */
 
     .menu-principal {
         height: 3rem;
@@ -449,9 +478,14 @@ option {
             transform: scale(1.1);
         }
     }
+    /* botón desplegar/replegar menú */
+
     .menu-icon {
         display: none;
     }
+
+    /* wrapper de las secciones */
+
     #sections-wrapper {
         width: 650%;
         max-width: 700px;
