@@ -11,6 +11,8 @@ export class Navegacion {
         this.portadaNombre = document.querySelector(".portada-nombre");
         this.portadaCurriculum = document.querySelector(".portada-curriculum");
 
+        this.oFotoQuienSoy = document.querySelector('.foto-quien-soy');
+
         // Posiciones de inicio en el scroll para cada sección
         this.offsets = []
 
@@ -60,6 +62,9 @@ export class Navegacion {
 
         // Cerrar menú lateral si está desplegado, al hacer click fuera del mismo
         document.body.addEventListener('click', this.closeMenu.bind(this))
+
+        // Ampliar foto
+        this.oFotoQuienSoy.addEventListener('click', this.ampliarFoto)
     }
 
     closeMenu(event) {
@@ -172,4 +177,15 @@ export class Navegacion {
             timer++;
         }
     } 
+
+    ampliarFoto(event) {
+        if (this.classList.contains('foto-ampliada')) {
+            this.classList.remove('foto-ampliada')
+            this.setAttribute('src', './assets/maop.png')
+        }
+        else {
+            this.classList.add('foto-ampliada')
+            this.setAttribute('src', './assets/maop-big.png')
+        }
+    }
 }

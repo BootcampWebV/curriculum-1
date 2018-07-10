@@ -16,6 +16,21 @@ p, h1, h2, h3 {
     margin: 10px 0px;
 }
 
+article {
+    margin-bottom: 1.5rem;
+}
+article ul {
+    list-style: disc;
+}
+article ul li {
+    margin-left: 1rem
+}
+
+aside, p {
+    margin: 0 0 1rem 0;
+    line-height: 1.5rem;
+}
+
 /* Cabecera */
 
 body > header {
@@ -39,6 +54,7 @@ body > header {
 body > header > h1 {
     font-weight: 100;
     line-height: 1.5rem;
+    font-size: 0.9rem;
 }
 
 /* Botones con iconos */
@@ -109,7 +125,7 @@ body > header > h1 {
 }
 
 .menu-principal ul li {
-    text-transform: inherit;
+    line-height: 1rem;
 }
 .menu-principal ul li a {
     right: 1rem;
@@ -143,9 +159,13 @@ section {
     padding-bottom: 2rem;
 }
 
-h1.titulo {
+section h1.titulo {
     font-size: 2rem;
     margin: 2rem 0;
+}
+
+section h2 {
+    font-size: 1.2rem;
 }
 
 /* PORTADA */
@@ -226,9 +246,7 @@ section.home h1, section.home h2 {
 }
 section.home header h2 {
     font-size: 3rem;
-}
-section.home hr {
-    box-shadow: 3px  2px black;
+    margin-top: 2rem;
 }
 
 section header i {
@@ -245,6 +263,25 @@ section header i {
     display: block;
     width: 90%;
     max-width: 800px;
+}
+
+/* Quien soy */
+
+.foto-quien-soy {
+    float: left;
+    width: 35%;
+    margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 5px 5px 10px #333333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s linear;
+}
+.foto-ampliada {
+    height: auto;
+    width: 100%;
+    z-index: 4;
+    transition: all 0.25s linear;
 }
 
 /* Botón ir al inicio */
@@ -278,7 +315,7 @@ body > footer {
 .redes-sociales .fa-twitter,
 .redes-sociales .fa-google-plus-g 
 {
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 .oculto {
@@ -386,10 +423,17 @@ option {
     border: 1px solid maroon;
     border-radius: 4px;
     box-shadow: 1px 1px 5px black;
-    
-    transition: opacity 0.4s linear;
-
     opacity: 1;
+    
+    transition: opacity 2s linear;
+
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+
 }
 .header-error-message h2 {
     font-size: 1.5rem;
@@ -412,12 +456,12 @@ option {
 }
 
 .error-oculto {
-    opacity: 0;
+    display: none;
     z-index: 0;
 }
 .texto-error-oculto {
     opacity: 0;
-    transition: opacity 0.4s linear;
+    transition: opacity 2s linear;
 }
 
 /** Mediaquery para escritorio **/
@@ -433,7 +477,7 @@ option {
         background-color: #333339;
     }
     body > header  > h1 {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     /* Menú */
