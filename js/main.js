@@ -135,7 +135,7 @@ export class Main {
             top += element.offsetTop || 0;
             element = element.offsetParent;
         } while(element);
-        return top; // - (window.innerWidth >= 900 ? 60 : 0); // - 100;
+        return top + 70; // + (window.innerWidth >= 900 ? 60 : 0); // - 100;
     };
 
     currentYPosition() {
@@ -156,7 +156,7 @@ export class Main {
             node = node.offsetParent;
             y += node.offsetTop;
         } 
-        return y - (window.innerWidth >= 900 ? 60 : 10);
+        return y - (window.innerWidth >= 900 ? 70 : 70);
     }
     
     smoothScroll(eID) {
