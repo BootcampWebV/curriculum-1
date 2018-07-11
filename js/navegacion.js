@@ -37,7 +37,7 @@ export class Navegacion {
         // Desplegar/replegar menú lateral
         this.menuIcon.addEventListener('click', (event) => {
             event.preventDefault();
-            event.stopPropagation();
+            //event.stopPropagation();
             this.menu.classList.toggle('menu-visible');
         })
 
@@ -56,7 +56,7 @@ export class Navegacion {
     }
 
     closeMenu(event) {
-        event.stopPropagation();
+        //event.stopPropagation();
         const tipoNodo = event.target.nodeName;
         if (this.menu.classList.contains('menu-visible') && tipoNodo != 'A' && tipoNodo != 'I')
             this.menu.classList.remove('menu-visible');
@@ -104,8 +104,6 @@ export class Navegacion {
             this.portadaCurriculum = clonCurriculum;
         }
         this.pageOffset = window.pageYOffset
-
-
     }
 
     prepararNavegacion() {
@@ -124,7 +122,7 @@ export class Navegacion {
             top += element.offsetTop || 0;
             element = element.offsetParent;
         } while(element);
-        return top; // + (window.innerWidth >= 900 ? 60 : 0); // - 100;
+        return top;
     };
 
     currentYPosition() {

@@ -25,8 +25,10 @@ p, h1, h2, h3 {
 a {
     text-decoration: none;
 }
-a:hover {
-    color: var(--color-activo);
+@media (hover: hover) {
+    a:hover {
+        color: var(--color-activo);
+    }
 }
 
 /* Cabecera */
@@ -168,7 +170,7 @@ main section > header {
     margin: 2rem 0 1.5rem 0;
     width: 105%;
     transform: translateX(-2.5%);
-    padding: 0.8rem 1rem;
+    padding: 0.7rem 1rem;
     border-radius: 3px;
     box-shadow: 3px 3px 8px var(--color-menu);
     color: white;
@@ -186,7 +188,7 @@ main section > header h1.titulo {
     margin: 0;
 }
 
-main section h2 {
+main section h2, main section h2 a {
     font-size: 1.2rem;
 }
 
@@ -194,14 +196,14 @@ article {
     margin-bottom: 1.5rem;
     padding-left: 1rem;
 }
-article ul {
+main section ul {
     list-style: disc;
 }
-article ul li {
+main section ul li {
     margin-left: 1.5rem;
     text-align: justify;
 }
-article ul li li {
+main section ul li li {
     margin-left: 2rem;
 }
 
@@ -302,7 +304,7 @@ main section.home .portada-curriculum {
     width: 25%;
     margin-right: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 5px 5px 10px #333333;
+    box-shadow: 3px 3px 10px #333333;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.25s linear;
@@ -408,7 +410,7 @@ body > footer {
     background-color: #090909;
     height: 100%;
     margin: 0 auto;
-    padding: 0.5rem;
+    padding: 0.8rem;
     box-shadow: -2px -2px 10px var(--color-texto);
 }
 body > footer nav ul.inicio {
@@ -427,7 +429,7 @@ body > footer nav ul.inicio a {
 ul.redes-sociales {
     display: flex;
     justify-content: center;
-    margin: 1rem 0 0.5rem 0;
+    margin: 0;
 }
 ul.redes-sociales li  {
     margin: 0 0.5rem;
@@ -439,11 +441,18 @@ ul.redes-sociales .fa-github,
 ul.redes-sociales .fa-twitter,
 ul.redes-sociales .fa-google-plus-g 
 {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 ul.redes-sciales {
     color: var(--color-fondo);
+}
+
+body footer p.copyleft {
+    font-size: small;
+    color: var(--color-fondo);
+    text-align: center;
+    margin: 0.5rem 0 0 0;
 }
 
 .oculto {
@@ -454,13 +463,6 @@ ul.redes-sciales {
 
 .active {
     background-color: var(--color-activo);
-}
-
-p.copyleft {
-    font-size: small;
-    color: var(--color-fondo);
-    text-align: center;
-    margin-top: 0;
 }
 
 /* Mensaje de Error */
@@ -494,6 +496,7 @@ p.copyleft {
     text-align: center;
 }
 .header-error-message h2 {
+    width: 100%;
     font-size: 1.5rem;
     line-height: 1.7rem;
     padding-right: 2rem;
