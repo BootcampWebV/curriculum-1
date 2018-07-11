@@ -95,6 +95,7 @@ export class ContactForm {
     closeErrorMessage() {
         this.currentFocus.focus();
         this.oErrorMessage.classList.add('error-oculto')   
+        this.oErrorMessage.children[0].classList.add('texto-error-oculto')
     }
 
     guardarDatos() {

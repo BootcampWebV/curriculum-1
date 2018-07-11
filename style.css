@@ -1,34 +1,32 @@
 /* Variables */
 
 :root {
-    --color-texto: white;
+    --color-texto: #444444; 
+    --color-fondo: white;
+    --color-hover: rgba(65, 105, 225, 0.9);
+    --color-activo: royalblue;
+    --color-menu: #333339;
 }
 body {
     font-family: Montserrat;
+    color: var(--color-texto);
 }
 
 p {
     text-align: justify;
     line-height: 1.5rem;
+    margin: 0 0 1rem 0;
 }
+
 
 p, h1, h2, h3 {
     margin: 10px 0px;
 }
-
-article {
-    margin-bottom: 1.5rem;
+a {
+    text-decoration: none;
 }
-article ul {
-    list-style: disc;
-}
-article ul li {
-    margin-left: 1rem
-}
-
-aside, p {
-    margin: 0 0 1rem 0;
-    line-height: 1.5rem;
+a:hover {
+    color: var(--color-activo);
 }
 
 /* Cabecera */
@@ -43,12 +41,12 @@ body > header {
     right: 0;
     width: 100%;
     z-index: 1;
-    color: white;
-    background-color: #222228;
+    color: var(--color-fondo);
+    background-color: var(--color-menu);
     padding: 0.5rem 1rem;
     opacity: 0.98;
     margin: 0;   
-    box-shadow: 1px 1px 7px #202020; 
+    box-shadow: 1px 1px 7px var(--color-texto); 
 }
 
 body > header > h1 {
@@ -61,17 +59,17 @@ body > header > h1 {
 
 .fa-stack {
     transition: all 0.2s linear;
-    color: #333339;
+    color: var(--color-menu);
 }
 
 @media (hover: hover) {
     .fa-stack:hover {
-        color: royalblue;
+        color: var(--color-hover);
         transition: all 0.2s linear;
     }
 }
 .fa-stack:active {
-    color: var(--color-texto);
+    color: var(--color-activo);
     transition: all 0.2s linear;
 }
 
@@ -100,20 +98,18 @@ body > header > h1 {
     min-width: 0px;
     height: 100vh;
     overflow: hidden;
-    background-color: #333339;
+    background-color: var(--color-menu);
     opacity: 0.95;
-    box-shadow: 4px 4px 6px black;
+    box-shadow: 4px 4px 6px var(--color-texto);
     
     z-index: 1;
-    color: white;
-    text-shadow: 2px 2px 4px black;
+    color: var(--color-fondo);
+    text-shadow: 2px 2px 4px var(--color-texto);
 
     display: flex;
     justify-content: center;
 
-
     transition: all 0.15s linear;
-
 }
 
 .menu-principal ul {
@@ -133,14 +129,14 @@ body > header > h1 {
     display: block;
     padding: 0.7rem 1.5rem;
     font-size: 1.2rem;
-    color: var(--color-texto);
+    color: var(--color-fondo);
 
     transition: transform 0.15s linear;
 }
 
 @media (hover: hover) {
     .menu-principal ul li a:hover {
-        background-color: rgba(65, 105, 225, 0.8);
+        background-color: var(--color-hover);
         opacity: 0.9;
         transform: scale(1.1) translateX(0.5rem);
     }
@@ -154,24 +150,59 @@ body > header > h1 {
 
 /* SECCIONES **************************************/
 
+article {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+article ul {
+    list-style: disc;
+}
+article ul li {
+    margin-left: 1.5rem;
+    text-align: justify;
+}
+article ul li li {
+    margin-left: 2rem;
+}
+aside {
+    margin: 0;
+}
+
+span.puesto {
+    display: block;
+    margin: 0 0 0.5rem 0;
+}
+span.periodo {
+    font-size: 0.9rem;
+    color: #999999;
+}
+
+main {
+    margin-bottom: 2rem;
+}
+
 section {
+    display: block;
+    clear: both;
+}
+main section > header {
     border-bottom: 1px solid grey;
-    padding-bottom: 2rem;
+    margin: 2rem 0 1rem 0;
+}
+main section > header h1.titulo {
+    font-size: 1.7rem;
+    line-height: 2rem;
+    margin: 2rem 0 0.5rem 0;
 }
 
-section h1.titulo {
-    font-size: 2rem;
-    margin: 2rem 0;
-}
-
-section h2 {
+main section h2 {
     font-size: 1.2rem;
 }
 
 /* PORTADA */
 
 section.home {
-    color: white;
+    color: var(--color-fondo);
     height: 100vh;
     background-image: url(./assets/portada.png);
     background-repeat: no-repeat;
@@ -187,10 +218,11 @@ section.home header {
     text-align: center;
     transform: translate(-50%, -50%);
     font-size: 4rem;
+    border: none;
 }
 
-.portada-nombre.animated {
-    animation: titulo-nombre 1s linear;
+.portada-nombre {
+    animation: titulo-nombre 1s ease-out;
     animation-fill-mode: forwards;    
 }
 
@@ -209,8 +241,8 @@ section.home header {
     }
 }
 
-.portada-curriculum.animated {
-    animation: titulo-curriculum 1s linear;
+.portada-curriculum {
+    animation: titulo-curriculum 1s ease-out;
     animation-fill-mode: forwards;    
 }
 
@@ -231,22 +263,25 @@ section.home header {
 
 section.home::after {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 100vh;
-    background-color: white;
+    background-color: var(--color-fondo);
     opacity: 0.2;
 }
 
 section.home h1, section.home h2 {
     font-size: 2rem;
     text-shadow: 4px 4px 4px black;
+    line-height: 2rem;
 }
 section.home header h2 {
     font-size: 3rem;
+    line-height: 3rem;
     margin-top: 2rem;
+    border: none;
 }
 
 section header i {
@@ -284,63 +319,25 @@ section header i {
     transition: all 0.25s linear;
 }
 
-/* Botón ir al inicio */
+/* Contacto */
 
-body > footer {
-    color: black;
-    position: fixed;
-    bottom: 0.4rem;
-    right: 0.4rem;
-    z-index: 2;
-    margin-top: 1rem;
-}
-.btn-volver {
-    font-size: 0.7rem;    
-    z-index: 2;
-}
 
-/* Redes sociales */
-
-.redes-sociales ul {
-    display: flex;
-    justify-content: center;
-    margin: 2rem;
-}
-.redes-sociales ul li  {
-    margin: 0 0.5rem;
-}
-.redes-sociales a span, 
-.redes-sociales .fa-linkedin,
-.redes-sociales .fa-github,
-.redes-sociales .fa-twitter,
-.redes-sociales .fa-google-plus-g 
-{
-    font-size: 1.7rem;
-}
-
-.oculto {
-    display: none;
-    opacity: 0;
-    transition: all 0.9s linear;
-}
-
-.active {
-    background-color: royalblue;
-}
-
-/* FORMULARIO */
+/* Formulario */
 
 .form-contact {
     display: grid;
     width: 100%;
     grid-gap: 0.8rem;
-    grid-template-columns: minmax(20%, 10rem) minmax(auto, 1fr)
+    grid-template-columns: minmax(23%, 10rem) minmax(auto, 1fr)
+}
+.form-contact > * {
+    align-self: center;
 }
 input, select, textarea {
     padding: 8px;
     border: 1px solid grey;
     border-radius: 3px;
-    background-color: white;
+    background-color: var(--color-fondo);
     font-family: "Montserrat";
     font-size: 1rem;
     grid-column: 2 / 3;
@@ -348,6 +345,7 @@ input, select, textarea {
 label {
     align-self: center;
     font-size: 0.9rem;
+    line-height: 0.9rem;
 }
 
 #como-conocido-otros {
@@ -366,9 +364,9 @@ label.top {
 .form-contact button {
     font-family: "Montserrat";
     font-size: 1.2rem;
-    color: var(--color-texto);
-    background-color: rgba(65, 105, 225, 0.9);
-    border: 1px solid royalblue;
+    color: var(--color-fondo);
+    background-color: var(--color-activo);
+    border: 1px solid var(--color-hover);
     border-radius: 3px;
     padding: 0.5rem 1rem;
     outline: none;
@@ -376,7 +374,7 @@ label.top {
 }
 @media (hover: hover) {
     .form-contact button:hover {
-        background-color: royalblue;
+        background-color: var(--color-hover);
         cursor: pointer;
         transform: scale(1.07);
     }
@@ -394,10 +392,69 @@ option {
     min-height: 2rem;
 }
 
-@media (max-width: 900px) and (orientation: landscape) {
-    .menu-oculto {
-        left: 100vw;
-    }
+
+/* Footer */
+
+/* Botón ir al inicio */
+
+body > footer {
+    background-color: #090909;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    box-shadow: -2px -2px 10px var(--color-texto);
+}
+body > footer nav ul.inicio {
+    color: black;
+    position: fixed;
+    bottom: 0.4rem;
+    right: 0.4rem;
+    z-index: 2;
+    margin-top: 1rem;
+}
+body > footer nav ul.inicio a {
+    font-size: 0.7rem;    
+}
+
+/* Redes sociales */
+
+ul.redes-sociales {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 0.5rem 0;
+}
+ul.redes-sociales li  {
+    margin: 0 0.5rem;
+    list-style: none;
+}
+ul.redes-sociales a span, 
+ul.redes-sociales .fa-linkedin,
+ul.redes-sociales .fa-github,
+ul.redes-sociales .fa-twitter,
+ul.redes-sociales .fa-google-plus-g 
+{
+    font-size: 2rem;
+}
+
+ul.redes-sciales {
+    color: var(--color-fondo);
+}
+
+.oculto {
+    display: none;
+    opacity: 0;
+    transition: all 0.9s linear;
+}
+
+.active {
+    background-color: var(--color-activo);
+}
+
+p.copyleft {
+    font-size: small;
+    color: var(--color-fondo);
+    text-align: center;
+    margin-top: 0;
 }
 
 /* Mensaje de Error */
@@ -408,32 +465,26 @@ option {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(32, 32, 32, 0.9);
+    background-color: rgba(32, 32, 32, 0.95);
     z-index: 3;
+    transition: all 2s linear;
     
 }
 .header-error-message {
     position: fixed;
-    top: 5rem;
-    left: 3rem;
-    right: 3rem;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 500px;
+    transform: translate(-50%, -50%);
     padding: 0.4rem 1rem;
-    color: white;
+    color: var(--color-fondo);
     background-color: rgb(243, 92, 92);
     border: 1px solid maroon;
     border-radius: 4px;
     box-shadow: 1px 1px 5px black;
     opacity: 1;
-    
-    transition: opacity 2s linear;
-
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    max-width: 500px;
     text-align: center;
-    transform: translate(-50%, -50%);
-
 }
 .header-error-message h2 {
     font-size: 1.5rem;
@@ -449,7 +500,7 @@ option {
     top: 0.4rem;
     right: 0.5rem;
     color: maroon;
-    background-color: white;
+    background-color: var(--color-fondo);
     font-weight: bold;
     border: 1px solid maroon;
     padding: 0.15rem 0.3rem;
@@ -461,7 +512,6 @@ option {
 }
 .texto-error-oculto {
     opacity: 0;
-    transition: opacity 2s linear;
 }
 
 /** Mediaquery para escritorio **/
@@ -474,7 +524,7 @@ option {
         height: 3rem;
         padding-top: 0.2rem;
         width: 100%;
-        background-color: #333339;
+        background-color: var(--color-menu);
     }
     body > header  > h1 {
         font-size: 0.8rem;
@@ -492,7 +542,7 @@ option {
         box-shadow: 4px 1px 6px black;
         width: 100%;
         z-index: 1;
-        color: white;
+        color: var(--color-fondo);
         text-shadow: 2px 2px 4px black;
         opacity: 0.95;
     }
@@ -513,7 +563,7 @@ option {
         padding: 1rem 1rem;
         font-size: 1rem;
         font-weight: lighter;
-        color: var(--color-texto);
+        color: var(--color-fondo);
     }
     @media (hover: hover) {
         .menu-principal ul li a:hover {
@@ -522,6 +572,7 @@ option {
             transform: scale(1.1);
         }
     }
+
     /* botón desplegar/replegar menú */
 
     .menu-icon {
@@ -531,8 +582,8 @@ option {
     /* wrapper de las secciones */
 
     #sections-wrapper {
-        width: 650%;
-        max-width: 700px;
+        width: 80%;
+        max-width: 800px;
     }
 
     /* Formulario */

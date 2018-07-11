@@ -22,18 +22,6 @@ export class Navegacion {
     }
 
     defineEventListeners() {
-        /*
-        this.navSecciones.forEach((enlaceSeccion) => {
-            enlaceSeccion.addEventListener('click', (event) => {
-                event.preventDefault();
-                let enlace = event.currentTarget.getAttribute('data-enlace');
-                let destino = document.querySelector(`#${enlace}`);
-                destino.scrollIntoView({ 
-                    behavior: 'smooth' 
-                })
-            })
-        })
-        */
 
         this.navSecciones.forEach(enlaceSeccion => {
             enlaceSeccion.addEventListener('click', (event) => {
@@ -105,9 +93,23 @@ export class Navegacion {
         else {
             this.btnInicio.classList.add('oculto');
         }
+
+        // Si volvemos al inicio, reiniciamos la animación, clonando los elementos animados y sustituyendo los antiguos por los clones
+        if (window.pageYOffset == 0) {
+            var clonNombre = this.portadaNombre.cloneNode(true);
+            var clonCurriculum = this.portadaCurriculum.cloneNode(true);
+            this.portadaNombre.parentNode.replaceChild(clonNombre, this.portadaNombre);
+            this.portadaCurriculum.parentNode.replaceChild(clonCurriculum, this.portadaCurriculum);
+            this.portadaNombre = clonNombre;
+            this.portadaCurriculum = clonCurriculum;
+        }
+        this.pageOffset = window.pageYOffset
+
+
     }
 
     prepararNavegacion() {
+        this.lastScroll = window.pageYOffset;
         this.secciones.forEach(
             (item) => {
                 let cumulative =  this.cumulativeOffset(item);
@@ -143,7 +145,7 @@ export class Navegacion {
             node = node.offsetParent;
             y += node.offsetTop;
         } 
-        return y - (window.innerWidth >= 900 ? 70 : 70);
+        return y - 65;
     }
     
     smoothScroll(eID) {
