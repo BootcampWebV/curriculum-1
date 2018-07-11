@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Miguel Angel Otero Prado - Currículum Vitae</title>
+    <link rel="icon" type="image/png" href="./assets/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="./js/app.js" type="module"></script>
@@ -21,7 +23,7 @@
     <nav id="menu" class="menu-principal">
         <ul>
             <li>
-                <a id="link-home" href="#home" data-enlace="home" class="active">Home</a>
+                <a id="link-home" href="#home" data-enlace="home" class="active">Inicio</a>
             </li>
             <li>
                 <a id="link-quien-soy" href="#quien-soy" data-enlace="quien-soy">Quién soy</a>
@@ -66,16 +68,18 @@
                 <button type="button" id="btn-close-message">X</button>
             </header>
         </section>
-        <div id="sections-wrapper">
-            <section id="quien-soy">
+        <div class="sections-wrapper">
+            <section id="quien-soy" class="quien-soy">
                 <header>
                     <i class="fas fa-user-alt"></i>
                     <h1 class="titulo">Quién soy</h1>
                 </header>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dignissimos, eum quod repellendus perspiciatis
-                    eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
-                    deserunt.
+                <p>Mi nombre es Miguel Angel Otero Prado. Nací allá por el año 1972 en A Coruña, una pequeña y tranquila ciudad en el noroest de España.</p>
+
+                <p>Soy un apasionado de las nuevas tecnologías, ávido lector 
+
                 </p>
+
 
                 <img class="foto-quien-soy" src="./assets/maop.png" alt="Foto de Miguel Angel Otero Prado" title="Miguel Angel Otero Prado">
 
@@ -145,7 +149,7 @@
                     <header>
                         <h2>Engasoft, S.L.</h2>
                     </header>
-                    <span class="periodo">Dic 00 - Nov 18</span><br>
+                    <span class="periodo">Dic 00 - Ene 18</span><br>
                     <span class="puesto">Analista / Programador / Técnico</span>
                     <ul>
                         <li>Desarrollo de Aplicación de análisis de datos de producción de parques eólicos (informes de disponibilidad, desviación de energía, curva de potencia, horas equivalentes,...)</li>
@@ -224,44 +228,7 @@
                     eaque optio quasi repellat, rerum eveniet culpa aspernatur ea, saepe aliquam vitae amet. Autem, reprehenderit
                     deserunt.
                 </p>
-<!--
-                <article class="redes-sociales">
-                    <ul>
-                        <li class="linkedin">
-                            <a href="#" title="Linkedin" >
-                                <span class="fa-stack fa-2x">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>        
-                        </li>
-                        <li>
-                            <a href="#" title="Github">
-                                <span class="fa-stack fa-2x">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="twitter">
-                            <a href="#" title="Twitter">
-                                <span class="fa-stack fa-2x">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="google-plus">
-                            <a href="#" title="Google+" >
-                                <span class="fa-stack fa-2x">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-google-plus-g fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>        
-                        </li>
-                    </ul>
-                </article>
--->
+
                 <form class="form-contact" id="form-contact" action="#" method="POST" novalidate>
                     
                     <label for="name">Nombre</label>
