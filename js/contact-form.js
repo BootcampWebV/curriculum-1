@@ -43,6 +43,7 @@ export class ContactForm {
 
     validateContactForm(event) {
         event.preventDefault();
+        console.log("aaa");
         // Validar Nombre
         if (!this.oInputNombre.checkValidity()) {
             //this.oInputNombre.focus()

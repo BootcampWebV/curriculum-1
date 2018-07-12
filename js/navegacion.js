@@ -1,6 +1,7 @@
 export class Navegacion {
 
     constructor() {
+
         // Elementos del DOM
         this.menu = document.querySelector("#menu");
         this.menuIcon = document.querySelector('.menu-icon');
@@ -12,32 +13,35 @@ export class Navegacion {
         this.portadaCurriculum = document.querySelector(".portada-curriculum");
 
         this.oFotoQuienSoy = document.querySelector('.foto-quien-soy');
+        this.wrapperAmpliarReducirFoto = document.querySelector(".wrapper-foto")
+        //this.icomAmpliarReducirFoto = document.querySelector(".wrapper-foto .fas")
+        this.icomAmpliarReducirFoto = document.querySelector(".wrapper-foto .fa-stack-1x")
 
         // Posiciones de inicio en el scroll para cada sección
         this.offsets = []
 
-        // inicializar event listeners y navegación
+        // Inicializar event listeners y navegación
         this.defineEventListeners()
         this.prepararNavegacion()
     }
 
     defineEventListeners() {
 
+        // Eventos click para los enalces a las secciones en el menú
         this.navSecciones.forEach(enlaceSeccion => {
             enlaceSeccion.addEventListener('click', (event) => {
                 this.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
             })
         });
 
-        // Volver al inicio de la página
+        // Evento click para el botón de volver al inicio de la página
         this.btnInicio.addEventListener('click', (event) => {
             this.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
         })
 
-        // Desplegar/replegar menú lateral
+        // Evento click para desplegar/replegar el menú lateral
         this.menuIcon.addEventListener('click', (event) => {
             event.preventDefault();
-            //event.stopPropagation();
             this.menu.classList.toggle('menu-visible');
         })
 
@@ -48,18 +52,20 @@ export class Navegacion {
         // Seleccionar la sección activa en el menú al hacer scroll
         window.addEventListener('scroll', this.changeActiveMenuItem.bind(this))
 
-        // Cerrar menú lateral si está desplegado, al hacer click fuera del mismo
+        // Cerrar menú lateral si está desplegado, al hacer click en el body, fuera del mismo
         document.body.addEventListener('click', this.closeMenu.bind(this))
-
-        // Ampliar foto
-        this.oFotoQuienSoy.addEventListener('click', this.ampliarFoto)
+        
+        // Ampliar/reducir foto
+        this.wrapperAmpliarReducirFoto.addEventListener('click', this.ampliarFoto.bind(this))
     }
 
     closeMenu(event) {
-        //event.stopPropagation();
+        event.stopPropagation();
+        //event.preventDefault();
         const tipoNodo = event.target.nodeName;
-        if (this.menu.classList.contains('menu-visible') && tipoNodo != 'A' && tipoNodo != 'I')
+        if (this.menu.classList.contains('menu-visible') && tipoNodo != 'A' && tipoNodo != 'I') {
             this.menu.classList.remove('menu-visible');
+        }
     }
     
     changeActiveMenuItem () {
@@ -125,6 +131,8 @@ export class Navegacion {
         return top;
     };
 
+    /* Funciones para Smooth Scroll */
+
     currentYPosition() {
         if (this.pageYOffset) 
             return this.pageYOffset;
@@ -178,14 +186,30 @@ export class Navegacion {
         }
     } 
 
+    /* Funciones de la Foto */
+
+    mouseOverFoto(event) {
+        let iconAmpliarReducirFoto = document.querySelector(".wrapper-foto .fas") //-search-plus")
+        iconAmpliarReducirFoto.classList.remove('oculto')
+    }
+
+    mouseOutFoto(event) {
+        let iconAmpliarReducirFoto = document.querySelector(".wrapper-foto .fas")
+        iconAmpliarReducirFoto.classList.add('oculto')
+    }
+
     ampliarFoto(event) {
-        if (this.classList.contains('foto-ampliada')) {
-            this.classList.remove('foto-ampliada')
-            this.setAttribute('src', './assets/maop.png')
+        if (this.oFotoQuienSoy.classList.contains('ampliada')) {
+            this.oFotoQuienSoy.classList.remove('ampliada')            
+            this.oFotoQuienSoy.setAttribute('src', './assets/maop.png')
+            this.icomAmpliarReducirFoto.classList.toggle('fa-search-minus')
+            this.icomAmpliarReducirFoto.classList.toggle('fa-search-plus')
         }
         else {
-            this.classList.add('foto-ampliada')
-            this.setAttribute('src', './assets/maop-big.png')
+            this.oFotoQuienSoy.classList.add('ampliada')
+            this.oFotoQuienSoy.setAttribute('src', './assets/maop-big.png')
+            this.icomAmpliarReducirFoto.classList.toggle('fa-search-plus')
+            this.icomAmpliarReducirFoto.classList.toggle('fa-search-minus')
         }
     }
 }
