@@ -14,7 +14,6 @@ export class Navegacion {
 
         this.oFotoQuienSoy = document.querySelector('.foto-quien-soy');
         this.wrapperAmpliarReducirFoto = document.querySelector(".wrapper-foto")
-        //this.icomAmpliarReducirFoto = document.querySelector(".wrapper-foto .fas")
         this.icomAmpliarReducirFoto = document.querySelector(".wrapper-foto .fa-stack-1x")
 
         // Posiciones de inicio en el scroll para cada sección
@@ -70,8 +69,8 @@ export class Navegacion {
     
     changeActiveMenuItem () {
         // Calcular en qué sección está el scroll
-        let desplazamiento = 5
-        let pageOffset = window.pageYOffset + Math.max(100, window.innerHeight / desplazamiento) // + (window.innerHeight / desplazamiento)
+        let desplazamiento = 10
+        let pageOffset = window.pageYOffset + Math.max(100, window.innerHeight / desplazamiento)
         let menuItem = 0
         if (pageOffset >=  this.offsets['#home'] && pageOffset < this.offsets['#quien-soy']) {
             menuItem = 0
@@ -113,7 +112,7 @@ export class Navegacion {
     }
 
     prepararNavegacion() {
-        this.lastScroll = window.pageYOffset;
+        //this.lastScroll = window.pageYOffset;
         this.secciones.forEach(
             (item) => {
                 let cumulative =  this.cumulativeOffset(item);
@@ -187,16 +186,6 @@ export class Navegacion {
     } 
 
     /* Funciones de la Foto */
-
-    mouseOverFoto(event) {
-        let iconAmpliarReducirFoto = document.querySelector(".wrapper-foto .fas") //-search-plus")
-        iconAmpliarReducirFoto.classList.remove('oculto')
-    }
-
-    mouseOutFoto(event) {
-        let iconAmpliarReducirFoto = document.querySelector(".wrapper-foto .fas")
-        iconAmpliarReducirFoto.classList.add('oculto')
-    }
 
     ampliarFoto(event) {
         if (this.oFotoQuienSoy.classList.contains('ampliada')) {
