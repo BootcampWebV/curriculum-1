@@ -10,7 +10,8 @@ export class ContactForm {
         this.oConocidoOtros = document.querySelector('#como-conocido-otros')
         this.oContactNumber = document.querySelector('#contactNumber')
         this.oTextMessage = document.querySelector('#mensaje')
-        this.oErrorMessage = document.querySelector('section.section-error-message')
+        this.oSectionError = document.querySelector('section.section-error-message')
+        this.oErrorMessage = document.querySelector('.header-error-message h2')
         this.oBtnCloseErrorMessage = document.querySelector('#btn-close-message')
 
         this.oData = {
@@ -43,61 +44,51 @@ export class ContactForm {
 
     validateContactForm(event) {
         event.preventDefault();
-        console.log("aaa");
         // Validar Nombre
         if (!this.oInputNombre.checkValidity()) {
-            //this.oInputNombre.focus()
-            //alert("El campo Nombre no puede estar vacío");
             this.currentFocus = this.oInputNombre;
-            this.mostrarError('El campo "Nombre" no puede estar vacío')
+            this.showError('El campo "Nombre" no puede estar vacío')
             return;
         }
         // Validar email
         if (!this.oInputEmail.checkValidity()) {
-            //this.oInputEmail.focus()
-            //alert("Email incorrecto")
             this.currentFocus = this.oInputEmail
-            this.mostrarError('Email incorrecto')
+            this.showError('Email incorrecto')
             return;
         }
         // Validar Número
         if (!this.oContactNumber.checkValidity()) {
-            //this.oContactNumber.focus()
-            //alert("Número de contacto incorrecto. Debe tener 9 dígitos");
             this.currentFocus = this.oContactNumber;
-            this.mostrarError('Número de contacto incorrecto.\nDebe tener 9 dígitos.')
+            this.showError('Número de contacto incorrecto.\nDebe tener 9 dígitos.')
             return;
         }
         // Validar número de palabras del mensaje
         const numPalabras = this.oTextMessage.value.trim().split(/\s+/).length;
         if (numPalabras > this.MAX_WORDS) {
-            //this.oTextMessage.focus()
-            //alert(`El mensaje no puede exceder de las ${this.MAX_WORDS} palabras`);
             this.currentFocus = this.oTextMessage
-            this.mostrarError(`El mensaje no puede exceder de las ${this.MAX_WORDS} palabras`)
+            this.showError(`El mensaje no puede exceder de las ${this.MAX_WORDS} palabras`)
             return;
         }
         // El formulario es válido y se puede enviar
         this.guardarDatos();
-        this.oContactForm.submit();
+//        this.oContactForm.submit();
     }
 
-    mostrarError(msg, objFocus) {
-        let oMessage = document.querySelector('.header-error-message .error-message')
-        oMessage.innerText = msg
-        this.oErrorMessage.classList.remove('error-oculto')
-        this.oErrorMessage.children[0].classList.remove('texto-error-oculto')
+    showError(msg) {
+        this.oErrorMessage.innerText = msg
+        this.oSectionError.classList.add('error-visible')
+
+        // Descomentar este código si queremos que la pantalla de error se cierre tras cierto tiempo
         /*
         setTimeout(() => {
-            this.oErrorMessage.classList.add('error-oculto')
+            this.oErrorMessage.classList.remove('error-visible')
         }, 4000)
         */
     }
 
     closeErrorMessage() {
         this.currentFocus.focus();
-        this.oErrorMessage.classList.add('error-oculto')   
-        this.oErrorMessage.children[0].classList.add('texto-error-oculto')
+        this.oSectionError.classList.remove('error-visible')   
     }
 
     guardarDatos() {

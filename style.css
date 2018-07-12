@@ -13,6 +13,7 @@
 body {
     font-family: Montserrat;
     color: var(--color-texto);
+    background-color: grey;
 }
 
 p {
@@ -80,7 +81,7 @@ body > header {
     padding: 0 1rem;
     opacity: 0.95;
     margin: 0;   
-    box-shadow: 2px 2px 10px black; 
+    box-shadow: 2px 2px 2px black; 
 }
 
 body > header > h1 {
@@ -88,6 +89,7 @@ body > header > h1 {
     line-height: 1.5rem;
     margin-top: 0.8rem;
     font-size: 1rem;
+    text-shadow: 2px 2px 8px black;
 }
 
 /*** MENÚ ***************/
@@ -146,7 +148,7 @@ body > header > h1 {
 }
 
 .menu-visible {
-    width: 45vw;
+    width: 40vw;
     transition: all 0.15s linear;
 }
 
@@ -414,6 +416,10 @@ input, select, textarea {
     grid-column: 2 / 3;
     font-family: Montserrat, sans-serif;
 }
+option {
+    min-height: 2rem;
+}
+
 label {
     align-self: center;
     font-size: 0.9rem;
@@ -424,6 +430,7 @@ label.top {
     align-self: flex-start;
     margin-top: 0.5rem;
 }
+
 .btn-wrapper {
     display: flex;
     flex-direction: row;
@@ -450,6 +457,8 @@ label.top {
     }
 }
 
+/* Opcional: Botón Reset */
+/*
 button[type="reset"] {
     background-color: rgba(20,90,20,1);
     border: 1px solid rgba(30,120,30,1);
@@ -458,10 +467,8 @@ button[type="reset"] {
 button[type="reset"]:hover {
     background-color: rgba(30,120,30,1);
 }
+*/
 
-option {
-    min-height: 2rem;
-}
 
 
 /* Footer */
@@ -526,10 +533,12 @@ body footer p.copyleft {
     right: 0;
     bottom: 0;
     left: 0;
+    margin: 0;
     background-color: rgba(32, 32, 32, 0.95);
     font-family: Roboto, sans-serif;
-    z-index: 3;
-    transition: all 2s linear;
+    z-index: 0;
+    transition: all 0.15s linear;
+    opacity: 0;
     
 }
 .header-error-message {
@@ -539,20 +548,18 @@ body footer p.copyleft {
     width: 80%;
     max-width: 500px;
     transform: translate(-50%, -50%);
-    padding: 0.4rem 1rem;
     color: var(--color-fondo);
     background-color: rgb(243, 92, 92);
     border: 1px solid maroon;
     border-radius: 4px;
     box-shadow: 1px 1px 5px black;
-    opacity: 1;
     text-align: center;
 }
 .header-error-message h2 {
     width: 100%;
     font-size: 1.5rem;
     line-height: 1.7rem;
-    padding-right: 2rem;
+    padding-right: 3rem;
     font-weight: normal;
     text-shadow: 1px 1px 1px black;
 }
@@ -564,17 +571,16 @@ body footer p.copyleft {
     right: 0.5rem;
     color: maroon;
     background-color: var(--color-fondo);
+    font-size: 1.3rem;
     font-weight: bold;
     border: 1px solid maroon;
-    padding: 0.15rem 0.3rem;
+    border-radius: 4px;
+    padding: 0.1rem 0.5rem;
 }
 
-.error-oculto {
-    display: none;
-    z-index: 0;
-}
-.texto-error-oculto {
-    opacity: 0;
+.error-visible {
+    opacity: 1;
+    z-index: 3;
 }
 
 /* Media Query para escritorio */
@@ -707,8 +713,26 @@ body footer p.copyleft {
     main section ul li li {
         font-size: 0.8rem;
     }
+    .fa-stack-1x {
+        position:absolute;
+        bottom:0.3rem;
+    }
+    .fa-stack-2x {
+        font-size: 1.5em;
+    }
+    body > header > h1 {
+        font-size: 0.8rem;
+        margin-top: 1rem;
+    }
+    body > footer nav ul.inicio {
+        bottom:0 ;
+        right: 0.2rem;
+    }
     main section > header h1.titulo {
         font-size: 1.2rem;
+    }
+    .menu-icon {
+        right: 0.1rem;
     }
     .menu-principal ul li a {
         font-size: 0.9rem;
@@ -731,11 +755,18 @@ body footer p.copyleft {
         font-size: 1.2rem;
         margin-top: 0;
     }
-    input, textarea, select {
-        overflow: hidden;
-    }    
     span.periodo {
         font-size: 0.7rem;
+    }    
+    input, textarea, select {
+        overflow: hidden;
     }
+    .form-contact button {
+        font-size: 0.8rem;
+    }
+
+    body footer p.copyleft {
+        font-size: 0.6rem;
+    }    
 }
 
