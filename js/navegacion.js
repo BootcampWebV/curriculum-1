@@ -1,3 +1,4 @@
+import { smoothScroll } from './smooth-scroll.js';
 export class Navegacion {
 
     constructor() {
@@ -9,8 +10,11 @@ export class Navegacion {
         this.secciones = document.querySelectorAll("section");
         this.btnInicio = document.querySelector("#btn-inicio");
 
-        this.portadaNombre = document.querySelector(".portada-nombre");
-        this.portadaCurriculum = document.querySelector(".portada-curriculum");
+        this.portadaNombre = document.querySelector("main section.home header h1");
+        this.portadaCurriculum = document.querySelector("main section.home header h2");
+        this.portadaFoto = document.querySelector("main section.home header img");
+
+        
 
         this.oFotoQuienSoy = document.querySelector('.foto-quien-soy');
         this.wrapperAmpliarReducirFoto = document.querySelector(".wrapper-foto")
@@ -22,20 +26,36 @@ export class Navegacion {
         // Inicializar event listeners y navegación
         this.defineEventListeners()
         this.prepararNavegacion()
+
+        // controlador de smooth scroll
+        this.smoothScrollHandler = new smoothScroll();
     }
 
     defineEventListeners() {
 
-        // Eventos click para los enalces a las secciones en el menú
+        /*
+        this.navSecciones.forEach((enlaceSeccion) => {
+            enlaceSeccion.addEventListener('click', (event) => {
+                event.preventDefault();
+                let enlace = event.currentTarget.getAttribute('data-enlace');
+                let destino = document.querySelector(`#${enlace}`);
+                destino.scrollIntoView({ 
+                    behavior: 'smooth' 
+                })
+            })
+        })
+        */
+        
+        // Eventos click para los enlaces a las secciones en el menú
         this.navSecciones.forEach(enlaceSeccion => {
             enlaceSeccion.addEventListener('click', (event) => {
-                this.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
+                this.smoothScrollHandler.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
             })
         });
 
         // Evento click para el botón de volver al inicio de la página
         this.btnInicio.addEventListener('click', (event) => {
-            this.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
+            this.smoothScrollHandler.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
         })
 
         // Evento click para desplegar/replegar el menú lateral
@@ -101,18 +121,23 @@ export class Navegacion {
 
         // Si volvemos al inicio, reiniciamos la animación, clonando los elementos animados y sustituyendo los antiguos por los clones
         if (window.pageYOffset == 0) {
-            var clonNombre = this.portadaNombre.cloneNode(true);
-            var clonCurriculum = this.portadaCurriculum.cloneNode(true);
+            let clonNombre = this.portadaNombre.cloneNode(true);
+            let clonCurriculum = this.portadaCurriculum.cloneNode(true);
+            //let clonFoto = this.portadaFoto.cloneNode(true);
+            
             this.portadaNombre.parentNode.replaceChild(clonNombre, this.portadaNombre);
-            this.portadaCurriculum.parentNode.replaceChild(clonCurriculum, this.portadaCurriculum);
             this.portadaNombre = clonNombre;
+            
+            this.portadaCurriculum.parentNode.replaceChild(clonCurriculum, this.portadaCurriculum);
             this.portadaCurriculum = clonCurriculum;
+            
+            //this.portadaFoto.parentNode.replaceChild(clonFoto, this.portadaFoto);
+            //this.portadaFoto = clonFoto;
         }
         this.pageOffset = window.pageYOffset
     }
 
     prepararNavegacion() {
-        //this.lastScroll = window.pageYOffset;
         this.secciones.forEach(
             (item) => {
                 let cumulative =  this.cumulativeOffset(item);
@@ -129,61 +154,6 @@ export class Navegacion {
         } while(element);
         return top;
     };
-
-    /* Funciones para Smooth Scroll */
-
-    currentYPosition() {
-        if (this.pageYOffset) 
-            return this.pageYOffset;
-        if (document.documentElement && document.documentElement.scrollTop)
-            return document.documentElement.scrollTop;
-        if (document.body.scrollTop) 
-            return document.body.scrollTop;
-        return 0;
-    }
-    
-    elmYPosition(eID) {
-        let elm = document.getElementById(eID);
-        let y = elm.offsetTop;
-        let node = elm;
-        while (node.offsetParent && node.offsetParent != document.body) {
-            node = node.offsetParent;
-            y += node.offsetTop;
-        } 
-        return y - 65;
-    }
-    
-    smoothScroll(eID) {
-        let startY = this.currentYPosition();
-        let stopY = this.elmYPosition(eID);
-        let distance = stopY > startY ? stopY - startY : startY - stopY;
-        if (distance < 100) {
-            scrollTo(0, stopY); 
-            return;
-        }
-        let speed = Math.round(distance / 100);
-        if (speed >= 20) speed = 20;
-        let step = Math.round(distance / 25);
-        let leapY = stopY > startY ? startY + step : startY - step;
-        let timer = 0;
-        if (stopY > startY) {
-            for (let i = startY; i < stopY; i += step ) {
-                setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
-                leapY += step; 
-                if (leapY > stopY) 
-                    leapY = stopY; 
-                timer++;
-            } 
-            return;
-        }
-        for (let i = startY; i > stopY; i -= step) {
-            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-            leapY -= step; 
-            if (leapY < stopY) 
-                leapY = stopY; 
-            timer++;
-        }
-    } 
 
     /* Funciones de la Foto */
 

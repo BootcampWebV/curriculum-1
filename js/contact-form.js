@@ -78,6 +78,7 @@ export class ContactForm {
             return;
         }
         // El formulario es válido y se puede enviar
+        this.guardarDatos();
         this.oContactForm.submit();
     }
 
@@ -104,9 +105,9 @@ export class ContactForm {
             nombre: this.oInputNombre.value,
             email: this.oInputEmail.value,
             comoConocido: this.oSelectConocido.value,
-            comoConocidoOtros: this.oSelectConocidoOtros.value,
+            comoConocidoOtros: this.oConocidoOtros.value,
             numero: this.oContactNumber.value,
-            message: this.oTextMessage.value
+            mensaje: this.oTextMessage.value
         }
         console.dir(this.oData)
     }
