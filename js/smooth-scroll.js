@@ -1,4 +1,4 @@
-export class smoothScroll {
+export class SmoothScroll {
     
     currentYPosition() {
         if (this.pageYOffset) 
@@ -31,7 +31,7 @@ export class smoothScroll {
         }
         let speed = Math.round(distance / 100);
         if (speed >= 20) speed = 20;
-        let step = Math.round(distance / 50);
+        let step = Math.round(distance / 40);
         let leapY = stopY > startY ? startY + step : startY - step;
         let timer = 0;
         if (stopY > startY) {

@@ -1,15 +1,18 @@
-import { ContactForm } from './contact-form.js'
-import { Navegacion } from './navegacion.js'
+import { Index } from './index.js'
+import { Tareas } from './tareas.js'
 
 export class Main {
 
     constructor () {
 
-        // controlador de navegación
-        this.oNavegacion = new Navegacion();
+        this.page = window.location.pathname
+        this.page = this.page.substr(this.page.lastIndexOf('/')+1,this.page.length)
 
-        // controlador del formulario de contacto
-        this.oFormContact = new ContactForm()
-    }
+        if (this.page === 'index.html') {
+            new Index()
+        } else if (this.page === 'tareas.html') {
+            new Tareas()
+        }
+    }    
 
 }

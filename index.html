@@ -20,10 +20,11 @@
     <header>
         <h1>Miguel Angel Otero Prado - CV</h1>
     </header>
+
     <nav id="menu" class="menu-principal">
         <ul>
             <li>
-                <a id="link-home" href="#home" data-enlace="home" class="active">Inicio</a>
+                <a id="link-home" href="#home" data-enlace="home">Inicio</a>
             </li>
             <li>
                 <a id="link-quien-soy" href="#quien-soy" data-enlace="quien-soy">Quién soy</a>
@@ -34,11 +35,16 @@
             <li>
                 <a id="link-experiencia" href="#experiencia" data-enlace="experiencia">Experiencia</a>
             </li>
+            <!--
             <li>
                 <a id="link-sobre-mi" href="#sobre-mi" data-enlace="sobre-mi">Sobre mí</a>
             </li>
+            -->
             <li>
-                <a id="link-contacto" href="#contacto" data-enlace="contacto" onclick="">Contacto</a>
+                <a id="link-contacto" href="#contacto" data-enlace="contacto">Contacto</a>
+            </li>
+            <li>
+                <a id="link-tareas" href="./tareas.html">Tareas</a>
             </li>
         </ul>
     </nav>
@@ -53,6 +59,18 @@
                 </a>
             </li>
         </ul>
+    </nav>
+    <nav>
+        <ul class="inicio">
+            <li>
+                <a href="#home" id="btn-inicio" data-enlace="home" title="Inicio" class="oculto">
+                    <span class="fa-stack fa-2x">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-arrow-up fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>    
     </nav>
     <main>
         <section id="home" class="home">
@@ -73,21 +91,45 @@
                     <i class="fas fa-user-alt"></i>
                     <h1 class="titulo">Quién soy</h1>
                 </header>
-
-                <p>Mi nombre es Miguel Angel Otero Prado. </p>
-                <div class="wrapper-foto">
-                    <!-- Foto a mostrar para pantallas de más de 900px de ancho, ampliable -->
-                    <img class="foto-quien-soy" src="./assets/maop.png" alt="Foto de Miguel Angel Otero Prado" title="Miguel Angel Otero Prado">
-                    <!-- Foto a mostrar para pantallas de menos de 900px de ancho, no ampliable -->
-                    <img class="foto-quien-soy-ampliada" src="./assets/maop-mid.png" alt="Foto de Miguel Angel Otero Prado" title="Miguel Angel Otero Prado">
-                    <!-- icono lupa para ampliar/reducir la imagen -->
-                    <span class="fa-stack fa-2x">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-search-plus fa-stack-1x fa-inverse"></i>
-                    </span>
-                </div>
-                <p>Nací allá por el año 1972 en A Coruña, una pequeña y tranquila ciudad en el noroeste de España.</p>
-                <p>Llevo más de 15 años trabajando como desarrollador de software, utilizando las más diversas tecnologías.</p>
+                <article>
+                    <header>
+                        <h2>Presentación</h2>
+                    </header>
+                    <p>Mi nombre es Miguel Angel Otero Prado. </p>
+                    <p>Nací allá por el año 1972 en A Coruña, una pequeña y tranquila ciudad en el noroeste de España.</p>
+                    <div class="wrapper-foto">
+                        <!-- Foto a mostrar para pantallas de más de 900px de ancho, ampliable -->
+                        <img class="foto-quien-soy" src="./assets/maop.png" alt="Foto de Miguel Angel Otero Prado" title="Miguel Angel Otero Prado">
+                        <!-- Foto a mostrar para pantallas de menos de 900px de ancho, no ampliable -->
+                        <img class="foto-quien-soy-ampliada" src="./assets/maop-mid.png" alt="Foto de Miguel Angel Otero Prado" title="Miguel Angel Otero Prado">
+                        <!-- icono lupa para ampliar/reducir la imagen -->
+                        <span class="fa-stack fa-2x">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fas fa-search-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <p>Llevo más de 15 años trabajando como desarrollador de software, utilizando las más diversas tecnologías.</p>
+                    <p>Soy un apasionado de las nuevas tecnologías, todo lo relacionado con ordenadores, y especialmente del
+                        desarrollo web.</p>
+                    <p>Aunque a veces no es fácil, me gusta estar pendiente de las evoluciones y novedades que van surgiendo
+                        en este apasionante mundo.</p>
+                    <p>El primer ordenador que tuve fue un MSX, cuando tenía 14 años.
+                        <br>Con él comencé mis andanzas en la programación, y es el culpable de mi pasión por la informática</p>
+                </article>
+                <article>
+                    <header>
+                        <h2>Aficiones</h2>
+                    </header>
+                    <p>Entre mis aficiones están leer, charlar con los amigos, escuchar música, y las series, especialmente
+                        de ciencia-ficción</p>
+                    <p>Mi escritor favorito es J.R.R. Tolkien, y mi grupo favorito es Pink Floyd.</p>
+                    <video controls>
+                        <!--<source src="./assets/natacion.mp4" type="video/mp4">-->
+                        <source src="./assets/natacion.webm" type="video/webm">
+                    </video>
+                    <p>En cuanto a deportes, mi preferido es la natación en aguas abiertas, aunque también me conformo con una piscina. </p>
+                    <p>También me gusta jugar al fútbol, y de vez en cuando alguna escapadita para hacer alguna ruta de senderismo.</p>
+                </article>                
             </section>
             <section id="estudios">
                 <header>
@@ -192,7 +234,7 @@
                         <li>Desarrollo de sitios web (Drupal 7):
                             <ul>
                                 <li><a href="http://www.sotaventogalicia.com" target="_blank">Sotavento Galicia</a></li>
-                                <li><a href="https://concellodemesia.gal" target="_blank">Concello de Mesía</a></li>
+                                <li><a href="http://concellodemesia.gal" target="_blank">Concello de Mesía</a></li>
                             </ul>
                         </li>
                         <li>Desarrollo de sitios web (sin CMS):
@@ -235,6 +277,7 @@
                     </ul>
                 </article>
             </section>
+            <!--
             <section id="sobre-mi">
                 <header>
                     <i class="fas fa-laugh"></i>
@@ -248,27 +291,31 @@
                     <p>El primer ordenador que tuve fue un MSX, cuando tenía 14 años.
                         <br>Con él comencé mis andanzas en la programación, y es el culpable de mi pasión por la informática</p>
                 </article>
-                <article>
-                    <header>
-                        <h2>Aficiones</h2>
-                    </header>
-                    <p>Entre mis aficiones están leer, charlar con los amigos, escuchar música, y las series, especialmente
-                        de ciencia-ficción</p>
-                    <p>Mi escritor favorito es J.R.R. Tolkien, y mi grupo favorito es Pink Floyd.</p>
-                    <video controls>
-                        <!--<source src="./assets/natacion.mp4" type="video/mp4">-->
-                        <source src="./assets/natacion.webm" type="video/webm">
-                    </video>
-                    <p>En cuanto a deportes, mi preferido es la natación en aguas abiertas, aunque también me conformo con una
-                        piscina. </p>
-                    <p>También me gusta jugar al fútbol, y de vez en cuando alguna escapadita para hacer alguna ruta de senderismo.</p>
-                </article>
             </section>
+            -->
             <section id="contacto">
                 <header>
                     <i class="fas fa-envelope"></i>
                     <h1 class="titulo">Contacto</h1>
                 </header>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada condimentum faucibus. Integer quis sem sem. Nulla eros nisl, rhoncus 
+                    pellentesque volutpat a, scelerisque ut sapien. Curabitur tempor metus vitae lorem sodales elementum. Suspendisse eget nisi ultrices, pulvinar nisi nec, 
+                    hendrerit turpis. Integer accumsan mauris id metus convallis vehicula. Fusce cursus varius ligula, eget aliquet justo porta ac. 
+                </p>
+                <p>
+                    Aliquam erat volutpat. Suspendisse congue elit eu ipsum pellentesque efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus posuere ipsum ac ornare feugiat. 
+                    Praesent suscipit condimentum sollicitudin. Aliquam lacinia massa mauris, non sodales massa bibendum at. In imperdiet tempus arcu, ut ornare odio. 
+                    Phasellus hendrerit faucibus nisi, et eleifend sem interdum et. Fusce laoreet feugiat viverra.
+                </p>
+                <p>
+                    Pellentesque malesuada nulla vitae libero dignissim, in semper leo semper. Suspendisse potenti. Nam ut faucibus sem, quis maximus lorem. 
+                    Vivamus semper massa vitae viverra accumsan. Suspendisse vehicula magna ex. Curabitur non neque quis ligula interdum bibendum. 
+                    Nullam dictum purus vulputate tortor sollicitudin, id bibendum eros fringilla.
+                    Proin vulputate est velit, in rhoncus ligula dapibus non. Quisque id dolor ut tellus blandit tristique ac at ante. Etiam at commodo orci. 
+                    Nam ac nunc consequat velit placerat pulvinar. Curabitur tristique eleifend suscipit. Donec eget interdum mauris, et suscipit sapien. 
+                </p>
+
                 <p>Puedes contactar conmigo a través de los siguientes medios:</p>
                 <ul>
                     <li>
@@ -295,14 +342,10 @@
 
                 <p>O a través del siguiente formulario:</p>
                 <form class="form-contact" id="form-contact" action="#" method="POST" novalidate>
-
                     <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" placeholder="Nombre*" required>
-
                     <label for="email">Email</label>
                     <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" placeholder="Email">
-
-
                     <label for="como-conocido">Cómo me has conocido</label>
                     <select id="como-conocido" name="como-conocido">
                         <option value="" disabled selected>Seleccionar...</option>
@@ -312,23 +355,17 @@
                         <option value="amigo">A través de un amigo</option>
                         <option value="otros">Otros</option>
                     </select>
-
                     <input type="text" class="oculto" id="como-conocido-otros" name="como-conocido-otros" placeholder="Cómo me has conocido...">
-
                     <label for="contactNumber">Número de contacto</label>
                     <input type="text" pattern="^\d{9}$" id="contactNumber" name="contactNumber" placeholder="Número de Contacto">
-
-
                     <label for="mensaje" class="top">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Mensaje (max. 150 palabras)"></textarea>
-
+                    <textarea id="mensaje" name="mensaje" rows="8" placeholder="Mensaje (max. 150 palabras)"></textarea>
                     <div class="btn-wrapper">
                         <!-- opcional: botón reset -->
                         <!-- <button type="reset" id="borrar">Reset</button> -->
                         <button type="submit" id="enviar">Enviar</button>
                     </div>
                 </form>
-
             </section>
         </div>
     </main>
@@ -364,16 +401,6 @@
                         <span class="fa-stack fa-2x">
                             <i class="fas fa-circle fa-stack-2x fa-inverse"></i>
                             <i class="fab fa-google-plus-g fa-stack-1x "></i>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="inicio">
-                <li>
-                    <a href="#home" id="btn-inicio" data-enlace="home" title="Inicio" class="oculto">
-                        <span class="fa-stack fa-2x">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fas fa-arrow-up fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
                 </li>
