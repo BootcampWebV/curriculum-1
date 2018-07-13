@@ -1,3 +1,5 @@
+const MAX_WORDS = 150;
+
 export class ContactForm {
     constructor() {
 
@@ -23,13 +25,46 @@ export class ContactForm {
             mensaje: ''
         }
 
+        this.mensajes = [];
+
         this.addEventListeners()
+
+        this.cargarMensajes()
     }
 
     addEventListeners() {
         this.oSelectConocido.addEventListener('change', this.changeConocido.bind(this))
+        this.oInputNombre.addEventListener('blur', this.comprobarCampo)
+        this.oInputEmail.addEventListener('blur', this.comprobarCampo)
+        this.oContactNumber.addEventListener('blur', this.comprobarCampo)
+        this.oTextMessage.checkValidity = this.comprobarPalabras
+        this.oTextMessage.addEventListener('blur', this.comprobarCampo)
         this.oContactForm.addEventListener('submit', this.validateContactForm.bind(this))
         this.oBtnCloseErrorMessage.addEventListener('click', this.closeErrorMessage.bind(this))
+    }
+
+    cargarMensajes() {
+        fetch("http://localhost:3000/messages")
+        .then((response) => {
+            return response.json()
+        })
+        .then(datos => {
+            this.mensajes = datos;
+        })
+    }
+
+    comprobarCampo(event) {
+        if (this.checkValidity()) {
+            this.classList.remove('invalido')
+        }
+        else {
+            this.classList.add('invalido')
+        }
+    }
+
+    comprobarPalabras() {
+        const numPalabras = this.value.trim().split(/\s+/).length;
+        return numPalabras <= MAX_WORDS
     }
 
     changeConocido() {
@@ -63,10 +98,9 @@ export class ContactForm {
             return;
         }
         // Validar número de palabras del mensaje
-        const numPalabras = this.oTextMessage.value.trim().split(/\s+/).length;
-        if (numPalabras > this.MAX_WORDS) {
+        if (!this.oTextMessage.checkValidity()) {
             this.currentFocus = this.oTextMessage
-            this.showError(`El mensaje no puede exceder de las ${this.MAX_WORDS} palabras`)
+            this.showError(`El mensaje no puede exceder de las ${MAX_WORDS} palabras`)
             return;
         }
         // El formulario es válido y se puede enviar
@@ -81,8 +115,8 @@ export class ContactForm {
         // Descomentar este código si queremos que la pantalla de error se cierre tras cierto tiempo
         /*
         setTimeout(() => {
-            this.oErrorMessage.classList.remove('error-visible')
-        }, 4000)
+            this.oSectionError.classList.remove('error-visible')
+        }, 5000)
         */
     }
 
@@ -91,8 +125,19 @@ export class ContactForm {
         this.oSectionError.classList.remove('error-visible')   
     }
 
+    obtenerID() {
+        let max = 0;
+        this.mensajes.forEach(mensaje => {
+            if (mensaje.id > max) {
+                max = mensaje.id;
+            }
+        })
+        return max + 1
+    }
+
     guardarDatos() {
         this.oData = {
+            id: this.obtenerID(),
             nombre: this.oInputNombre.value,
             email: this.oInputEmail.value,
             comoConocido: this.oSelectConocido.value,
@@ -101,6 +146,18 @@ export class ContactForm {
             mensaje: this.oTextMessage.value
         }
         console.dir(this.oData)
+        // Enviar datos al servidor json-server
+        fetch('http://localhost:3000/messages', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify(this.oData)
+        })
+        .then(response => {
+            console.log(response);
+        })
     }
 
 }

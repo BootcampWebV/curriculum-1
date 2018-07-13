@@ -294,17 +294,6 @@ main section.home header h2 {
     animation: titulo-nombre 1s ease-out;
     animation-fill-mode: forwards;    
 }
-/*
-main section.home header img {
-    width: 200px; 
-    height: auto; 
-    margin-top: 1rem;
-    border: 3px solid black; 
-    border-radius: 5px;
-    animation: titulo-imagen 1s ease-out;
-    animation-fill-mode: forwards;  
-}
-*/
 
 @keyframes titulo-nombre {
     0% {
@@ -335,22 +324,6 @@ main section.home header img {
         transform: translateX(0) scale(1);
     }
 }
-/*
-@keyframes titulo-imagen {
-    0% {
-        opacity: 0;
-        transform: translateY(100vh) scale(0);
-    }
-    50% {
-        opacity: 0.1;
-        transform: translateY(50vh) scale(0.5);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-*/
 
 /* Quien soy */
 
@@ -416,6 +389,10 @@ input, select, textarea {
     grid-column: 2 / 3;
     font-family: Montserrat, sans-serif;
 }
+
+.invalido {
+    border: 2px solid red;
+}
 option {
     min-height: 2rem;
 }
@@ -468,8 +445,6 @@ button[type="reset"]:hover {
     background-color: rgba(30,120,30,1);
 }
 */
-
-
 
 /* Footer */
 
@@ -583,7 +558,7 @@ body footer p.copyleft {
     z-index: 3;
 }
 
-/* Media Query para escritorio */
+/* MediaQuery para escritorio, pantallas con resolución mayor a los 900 pixels de ancho */
 
 @media (min-width: 900px) {
 
@@ -661,7 +636,6 @@ body footer p.copyleft {
         border-radius: 5px;
     }
     
-
     /* Formulario */
 
     .form-contact {
