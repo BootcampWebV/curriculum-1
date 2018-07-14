@@ -40,7 +40,7 @@ export class Navegacion {
             enlaceSeccion.addEventListener('click', (event) => {
                 const enlace = event.currentTarget.getAttribute('data-enlace');
                 if (enlace) {
-                    event.preventDefault();
+                    //event.preventDefault();
                     this.smoothScrollHandler.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
                 }
             })

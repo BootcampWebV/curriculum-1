@@ -1,12 +1,12 @@
 import { ErrorMessage } from './error-message.js'
 
-const MAX_WORDS = 150;
+const MAX_WORDS = 150
 
 export class ContactForm {
 
     constructor() {
 
-        this.MAX_WORDS = 150
+        this.URL_API = 'http://localhost:3000/messages'
 
         // Controlador para los mensajes de error
         this.handlerErrorMessage = new(ErrorMessage)
@@ -51,7 +51,7 @@ export class ContactForm {
 
     cargarMensajes() {
 
-        fetch("http://localhost:3000/messages")
+        fetch(this.URL_API)
         .then(response => {
             return response.json()
         })
@@ -97,6 +97,7 @@ export class ContactForm {
     validateContactForm(event) {
 
         event.preventDefault();
+
         // Validar Nombre
         if (!this.oInputNombre.checkValidity()) {
             this.handlerErrorMessage.currentFocus = this.oInputNombre;
@@ -125,8 +126,8 @@ export class ContactForm {
         // Guardar los datos con la API json-server
         this.guardarDatos();
 
-        // El formulario es válido y se puede enviar
-        this.oContactForm.submit();
+        // El formulario es válido y se puede enviar, pero la linea está comentada dado que no hay servidor al que enviar los datos
+        // this.oContactForm.submit();
     }
 
     obtenerID() {
@@ -153,8 +154,10 @@ export class ContactForm {
         }
         console.dir(this.oData)
 
+        this.mensajes.push(this.oData);
+
         // Enviar datos al servidor json-server
-        fetch('http://localhost:3000/messages', {
+        fetch(this.URL_API, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"

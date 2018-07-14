@@ -1,6 +1,8 @@
 import { Navegacion } from './navegacion.js'
 import { ErrorMessage } from './error-message.js'
 
+const URL_API = 'http://localhost:3000/tareas'
+
 export class Tareas {
 
     constructor () {
@@ -11,6 +13,7 @@ export class Tareas {
         // Controlador para los mensajes de error
         this.handlerErrorMessage = new(ErrorMessage);
 
+        // Lista de tareas
         this.tareas = [];
 
         // Elementos del DOM
@@ -18,23 +21,26 @@ export class Tareas {
         this.oInputTarea = document.querySelector('#nueva-tarea')
         this.listaTareas = document.querySelector('#lista-tareas')
 
-        this.oInputTarea.setCustomValidity("Debe introducir una tarea");
-
         this.handlerErrorMessage.currentFocus = this.oInputTarea;
 
+        // Cargar tareas del REST API json-server
         this.fetchTareas();
 
+        // Evento blur para el campo de texto
+        this.oInputTarea.addEventListener('blur', this.validarTarea)
+        // Evento submit del formulario, validar y crear nueva tarea
         this.formNuevaTarea.addEventListener('submit', this.crearTarea.bind(this))
 
     }    
 
     fetchTareas() {
 
-        fetch("http://localhost:3000/tareas")
+        fetch(URL_API)
         .then((response) => {
             return response.json()
         })
         .then(datos => {
+            // Carga correcta, añadir la lista al DOM
             this.tareas = datos;
             this.cargarTareas();
         })
@@ -72,7 +78,7 @@ export class Tareas {
         // Obtener id de la tarea a marcar como completada
         let li = event.target.parentNode
         let id = li.getAttribute('data-id')
-        fetch(`http://localhost:3000/tareas/${id}`, {
+        fetch(`${URL_API}/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -95,17 +101,23 @@ export class Tareas {
         event.stopPropagation();
         // Obtener id de la tarea a marcar como completada
         let li = event.currentTarget.parentNode
-        let id = li.getAttribute('data-id')
-        fetch(`http://localhost:3000/tareas/${id}`, {
+        let id_tarea = parseInt(li.getAttribute('data-id'))
+        fetch(`${URL_API}/${id_tarea}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
             },
-            body: JSON.stringify({id: id /*, tarea: event.currentTarget.innerText, completada: !event.currentTarget.classList.contains('completada')*/})
+            body: JSON.stringify({id: id_tarea})
         })
         .then(response => {
             if (response.status == 200) {
+                // Eliminar li del DOM
                 this.listaTareas.removeChild(li);
+
+                // Eliminar tarea de la lista
+                this.tareas = this.tareas.filter(tarea => {
+                    return tarea.id != id_tarea
+                })
             }
         })
         .catch(error => {
@@ -124,16 +136,34 @@ export class Tareas {
         return max + 1
     }
 
+    validarTarea(event) {
+        if (this.checkValidity()) {
+            this.classList.remove('invalido')
+        }
+        else {
+            this.classList.add('invalido')
+        }
+    }
+
     crearTarea(event) {
 
         event.preventDefault()
+
+        // Validar campo tarea
+        if (!this.oInputTarea.checkValidity()) {
+            this.handlerErrorMessage.showError('Debe introducir una tarea')
+            return;
+        }
+
+        // Crear nuevo objeto tarea
         let tarea = {
             id: this.obtenerID(),
             tarea: this.oInputTarea.value,
             completada: false
         }
+
         // Enviar datos al servidor json-server
-        fetch('http://localhost:3000/tareas', {
+        fetch(URL_API, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -153,8 +183,14 @@ export class Tareas {
                 nuevaTarea.querySelector('span.texto-tarea').addEventListener('click', this.toggleTareaCompletada.bind(this))
                 nuevaTarea.querySelector('span.btn-eliminar-tarea').addEventListener('click', this.eliminarTarea.bind(this))
 
-                // Añadir nuevo elemento li a la lista de tareas
+                // Añadir tarea a la lista
+                this.tareas.push(tarea);
+
+                // Añadir nuevo elemento li al DOM de la lista de tareas
                 this.listaTareas.appendChild(nuevaTarea);
+
+                // Limpiar campo del formulario
+                this.oInputTarea.value = ''
             }
         })
         .catch(error => {
