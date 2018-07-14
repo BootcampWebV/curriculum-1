@@ -40,11 +40,15 @@ export class ContactForm {
 
     addEventListeners() {
         
+        
         this.oSelectConocido.addEventListener('change', this.changeConocido.bind(this))
+        this.oInputNombre.addEventListener('input', this.comprobarCampo)
         this.oInputNombre.addEventListener('blur', this.comprobarCampo)
-        this.oInputEmail.addEventListener('blur', this.comprobarCampo)
-        this.oContactNumber.addEventListener('blur', this.comprobarCampo)
+        this.oInputEmail.addEventListener('input', this.comprobarCampo)
+        this.oInputNombre.addEventListener('blur', this.comprobarCampo)
+        this.oContactNumber.addEventListener('input', this.comprobarCampo)
         this.oTextMessage.checkValidity = this.comprobarPalabras
+        this.oTextMessage.addEventListener('input', this.comprobarCampo)
         this.oTextMessage.addEventListener('blur', this.comprobarCampo)
         this.oContactForm.addEventListener('submit', this.validateContactForm.bind(this))
     }
@@ -169,7 +173,6 @@ export class ContactForm {
         })
         .catch(error => {
             console.log(error);
-            showErrorMessage(error.message)
         })
     }
 

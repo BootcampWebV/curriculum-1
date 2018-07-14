@@ -283,12 +283,13 @@
                     </ul>
                 </article>
             </section>
-            <section id="contacto">
+            <section id="contacto" class="contacto">
                 <header>
                     <i class="fas fa-envelope"></i>
                     <h1 class="titulo">Contacto</h1>
                 </header>
 
+                <!--
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada condimentum faucibus. Integer quis sem sem. Nulla eros nisl, rhoncus 
                     pellentesque volutpat a, scelerisque ut sapien. Curabitur tempor metus vitae lorem sodales elementum. Suspendisse eget nisi ultrices, pulvinar nisi nec, 
                     hendrerit turpis. Integer accumsan mauris id metus convallis vehicula. Fusce cursus varius ligula, eget aliquet justo porta ac. 
@@ -305,32 +306,40 @@
                     Proin vulputate est velit, in rhoncus ligula dapibus non. Quisque id dolor ut tellus blandit tristique ac at ante. Etiam at commodo orci. 
                     Nam ac nunc consequat velit placerat pulvinar. Curabitur tristique eleifend suscipit. Donec eget interdum mauris, et suscipit sapien. 
                 </p>
+                -->
 
-                <p>Puedes contactar conmigo a través de los siguientes medios:</p>
+
+                <p>Si deseas ponerte en contacto conmigo, puedes hacerlo a través de los siguientes medios:</p>
                 <ul>
                     <li>
-                        <span class="titulo">Teléfono:</span>
+                        <i class="fas fa-phone-square"></i>
+                        <span>Teléfono: </span>
                         <a href="tel:+34687780332">(+34) 687780332</a>
                     </li>
                     <li>
-                        <span class="titulo">Email: </span>
+                        <i class="fas fa-envelope-square"></i>
+                        <span>Email: </span>
                         <a href="mailto:miguel.otero.prado@gmail.com">miguel.otero.prado@gmail.com</a>
                     </li>
                     <li>
-                        <span class="titulo"></span>
+                        <i class="fab fa-linkedin"></i>
                         <a href="https://www.linkedin.com/in/miguel-otero-prado-14654a153/" target="_blank">Linkedin</a>
                     </li>
                     <li>
-                        <span class="titulo"></span>
+                        <i class="fab fa-twitter-square"></i>
                         <a href="https://twitter.com/Miguelitri72" target="_blank">Twitter</a>
                     </li>
                     <li>
-                        <span class="titulo"></span>
+                        <i class="fab fa-google-plus-square"></i>
                         <a href="https://plus.google.com/101984595047566183681" target="_blank">Google+</a>
                     </li>
                 </ul>
+                <p>Intentaré contestarte a la mayor brevedad posible...</p>
 
-                <p>O a través del siguiente formulario:</p>
+                <p>También puedes contactar rellenando el siguiente formulario:</p>
+
+                <h2>Formulario de Contacto</h2>
+
                 <form class="form-contact" id="form-contact" action="#" method="POST" novalidate>
                     <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" placeholder="Nombre*" required>
@@ -349,7 +358,7 @@
                     <label for="contactNumber">Número de contacto</label>
                     <input type="text" pattern="^\d{9}$" id="contactNumber" name="contactNumber" placeholder="Número de Contacto">
                     <label for="mensaje" class="top">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="8" placeholder="Mensaje (max. 150 palabras)"></textarea>
+                    <textarea id="mensaje" name="mensaje" rows="10" placeholder="Mensaje (max. 150 palabras)"></textarea>
                     <div class="btn-wrapper">
                         <!-- opcional: botón reset -->
                         <!-- <button type="reset" id="borrar">Reset</button> -->

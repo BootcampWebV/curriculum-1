@@ -27,10 +27,14 @@ export class Tareas {
         this.fetchTareas();
 
         // Evento blur para el campo de texto
-        this.oInputTarea.addEventListener('blur', this.validarTarea)
+        // this.oInputTarea.addEventListener('blur', this.validarTarea)
+        
+        // Evento Input para validar el campo tarea
+        this.oInputTarea.addEventListener('input', this.validarTarea.bind(this))
+        this.validarTarea()
+
         // Evento submit del formulario, validar y crear nueva tarea
         this.formNuevaTarea.addEventListener('submit', this.crearTarea.bind(this))
-
     }    
 
     fetchTareas() {
@@ -136,24 +140,23 @@ export class Tareas {
         return max + 1
     }
 
-    validarTarea(event) {
-        if (this.checkValidity()) {
-            this.classList.remove('invalido')
+    validarTarea() {
+        let msg = ''
+        this.oInputTarea.setCustomValidity(msg)
+        if(!this.oInputTarea.checkValidity()) {
+            msg = 'Debe introducir la Tarea'
+            this.oInputTarea.classList.add('invalido')
         }
         else {
-            this.classList.add('invalido')
+            this.oInputTarea.classList.remove('invalido')
         }
+        this.oInputTarea.setCustomValidity(msg)
+        
     }
 
     crearTarea(event) {
 
         event.preventDefault()
-
-        // Validar campo tarea
-        if (!this.oInputTarea.checkValidity()) {
-            this.handlerErrorMessage.showError('Debe introducir una tarea')
-            return;
-        }
 
         // Crear nuevo objeto tarea
         let tarea = {
@@ -191,6 +194,7 @@ export class Tareas {
 
                 // Limpiar campo del formulario
                 this.oInputTarea.value = ''
+                this.validarTarea()
             }
         })
         .catch(error => {

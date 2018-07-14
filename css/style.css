@@ -385,6 +385,18 @@ span.periodo {
 
 /* Contacto */
 
+main section.contacto ul {
+    list-style: none;
+}
+main section.contacto ul li i {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    width: 2rem;
+}
+main section.contacto ul li span {
+    margin-right: 0.8rem;
+}
+
 /* Formulario */
 
 form {
@@ -601,8 +613,16 @@ body footer p.copyleft {
         right: 0.2rem;
     }
 
+    main section > header {
+        padding: 0.3rem 0.5rem;
+    }    
+
     main section > header h1.titulo {
         font-size: 1.2rem;
+    }
+
+    main section > header i {
+        font-size: 1.9rem;
     }
 
     .menu-icon {
@@ -643,6 +663,17 @@ body footer p.copyleft {
 
     span.periodo {
         font-size: 0.7rem;
+    }
+
+    /* Contacto */
+
+    main section.contacto ul li i {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        width: 1.6rem;
+    }
+    main section.contacto ul li span {
+        margin-right: 0.5rem;
     }
 
     form {
