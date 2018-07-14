@@ -1,0 +1,53 @@
+/***** TAREAS **********************************/
+
+.main-tareas {
+    position: absolute;
+    top: 3.5rem;
+    width: 100%;
+}
+
+form.form-tareas {
+    grid-template-columns: auto 6rem;
+}
+.form-tareas input {
+    grid-column: 1 / 2;
+}
+
+@media (max-width: 480px) {
+    form.form-tareas {
+        grid-template-columns: auto 4rem;
+    }
+    button {
+        padding: 0.5rem 0.5rem;
+    }
+}
+
+section.section-lista-tareas ul {
+    list-style: none;
+}
+
+section.section-lista-tareas ul li {
+    border: 1px solid #a0a0a0;
+    box-shadow: 1px 1px 2px grey;
+    line-height: 2rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;;
+}
+span.texto-tarea {
+    cursor: pointer;
+}
+span.texto-tarea.completada {
+    cursor: pointer;
+    text-decoration: line-through;
+    color: grey;
+}
+
+span.btn-eliminar-tarea {
+    float: right;
+    font-size: 1.2rem;
+    cursor: pointer;
+    /*border: 1px solid grey;*/
+}
+span.btn-eliminar-tarea .fa-trash-alt {
+    font-size: 1.3rem;
+}

@@ -4,6 +4,7 @@ import { ContactForm } from './contact-form.js'
 export class Index {
 
     constructor() {
+
         // controlador de navegación
         this.oNavegacion = new Navegacion('index');
 
@@ -19,11 +20,13 @@ export class Index {
     }
 
     defineEventListeners() {
+
         // Ampliar/reducir foto
         this.wrapperAmpliarReducirFoto.addEventListener('click', this.ampliarFoto.bind(this))
     }
 
     ampliarFoto(event) {
+        
         if (this.oFotoQuienSoy.classList.contains('ampliada')) {
             this.oFotoQuienSoy.classList.remove('ampliada')            
             this.oFotoQuienSoy.setAttribute('src', './assets/maop.png')

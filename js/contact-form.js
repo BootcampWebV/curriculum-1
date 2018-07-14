@@ -1,9 +1,15 @@
+import { ErrorMessage } from './error-message.js'
+
 const MAX_WORDS = 150;
 
 export class ContactForm {
+
     constructor() {
 
         this.MAX_WORDS = 150
+
+        // Controlador para los mensajes de error
+        this.handlerErrorMessage = new(ErrorMessage)
 
         this.oContactForm = document.querySelector('#form-contact')
         this.oInputNombre = document.querySelector('#name')
@@ -12,9 +18,6 @@ export class ContactForm {
         this.oConocidoOtros = document.querySelector('#como-conocido-otros')
         this.oContactNumber = document.querySelector('#contactNumber')
         this.oTextMessage = document.querySelector('#mensaje')
-        this.oSectionError = document.querySelector('section.section-error-message')
-        this.oErrorMessage = document.querySelector('.header-error-message h2')
-        this.oBtnCloseErrorMessage = document.querySelector('#btn-close-message')
 
         this.oData = {
             nombre: '',
@@ -27,12 +30,16 @@ export class ContactForm {
 
         this.mensajes = [];
 
+        // Añadir eventos
         this.addEventListeners()
 
+        // Cargar mensajes de la API json-server.
+        // Si el servidor no está corriendo o hay algún error, se muestra en la consola
         this.cargarMensajes()
     }
 
     addEventListeners() {
+        
         this.oSelectConocido.addEventListener('change', this.changeConocido.bind(this))
         this.oInputNombre.addEventListener('blur', this.comprobarCampo)
         this.oInputEmail.addEventListener('blur', this.comprobarCampo)
@@ -40,20 +47,25 @@ export class ContactForm {
         this.oTextMessage.checkValidity = this.comprobarPalabras
         this.oTextMessage.addEventListener('blur', this.comprobarCampo)
         this.oContactForm.addEventListener('submit', this.validateContactForm.bind(this))
-        this.oBtnCloseErrorMessage.addEventListener('click', this.closeErrorMessage.bind(this))
     }
 
     cargarMensajes() {
+
         fetch("http://localhost:3000/messages")
-        .then((response) => {
+        .then(response => {
             return response.json()
         })
         .then(datos => {
             this.mensajes = datos;
         })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
+    // Comprobar validez de un campo
     comprobarCampo(event) {
+
         if (this.checkValidity()) {
             this.classList.remove('invalido')
         }
@@ -62,12 +74,16 @@ export class ContactForm {
         }
     }
 
+    // Comprobar que el número de palabras no exceda del máximo
     comprobarPalabras() {
+
         const numPalabras = this.value.trim().split(/\s+/).length;
         return numPalabras <= MAX_WORDS
     }
 
+    // Mostar/ocultar campo de texto en función del valor del select 'Como me has conocido'
     changeConocido() {
+
         if (this.oSelectConocido.value == 'otros') {
             this.oConocidoOtros.classList.remove('oculto')
             this.oConocidoOtros.focus()
@@ -77,55 +93,44 @@ export class ContactForm {
         }
     }
 
+    // validar formulario
     validateContactForm(event) {
+
         event.preventDefault();
         // Validar Nombre
         if (!this.oInputNombre.checkValidity()) {
-            this.currentFocus = this.oInputNombre;
-            this.showError('El campo "Nombre" no puede estar vacío')
+            this.handlerErrorMessage.currentFocus = this.oInputNombre;
+            this.handlerErrorMessage.showError('El campo "Nombre" no puede estar vacío')
             return;
         }
         // Validar email
         if (!this.oInputEmail.checkValidity()) {
-            this.currentFocus = this.oInputEmail
-            this.showError('Email incorrecto')
+            this.handlerErrorMessage.currentFocus = this.oInputEmail
+            this.handlerErrorMessage.showError('Email incorrecto')
             return;
         }
         // Validar Número
         if (!this.oContactNumber.checkValidity()) {
-            this.currentFocus = this.oContactNumber;
-            this.showError('Número de contacto incorrecto.\nDebe tener 9 dígitos.')
+            this.handlerErrorMessage.currentFocus = this.oContactNumber;
+            this.handlerErrorMessage.showError('Número de contacto incorrecto.\nDebe tener 9 dígitos.')
             return;
         }
         // Validar número de palabras del mensaje
         if (!this.oTextMessage.checkValidity()) {
-            this.currentFocus = this.oTextMessage
-            this.showError(`El mensaje no puede exceder de las ${MAX_WORDS} palabras`)
+            this.handlerErrorMessage.currentFocus = this.oTextMessage
+            this.handlerErrorMessage.showError(`El mensaje no puede exceder de las ${MAX_WORDS} palabras`)
             return;
         }
-        // El formulario es válido y se puede enviar
+        
+        // Guardar los datos con la API json-server
         this.guardarDatos();
-//        this.oContactForm.submit();
-    }
 
-    showError(msg) {
-        this.oErrorMessage.innerText = msg
-        this.oSectionError.classList.add('error-visible')
-
-        // Descomentar este código si queremos que la pantalla de error se cierre tras cierto tiempo
-        /*
-        setTimeout(() => {
-            this.oSectionError.classList.remove('error-visible')
-        }, 5000)
-        */
-    }
-
-    closeErrorMessage() {
-        this.currentFocus.focus();
-        this.oSectionError.classList.remove('error-visible')   
+        // El formulario es válido y se puede enviar
+        this.oContactForm.submit();
     }
 
     obtenerID() {
+
         let max = 0;
         this.mensajes.forEach(mensaje => {
             if (mensaje.id > max) {
@@ -136,6 +141,7 @@ export class ContactForm {
     }
 
     guardarDatos() {
+        
         this.oData = {
             id: this.obtenerID(),
             nombre: this.oInputNombre.value,
@@ -146,17 +152,21 @@ export class ContactForm {
             mensaje: this.oTextMessage.value
         }
         console.dir(this.oData)
+
         // Enviar datos al servidor json-server
         fetch('http://localhost:3000/messages', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                // "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify(this.oData)
         })
         .then(response => {
             console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+            showErrorMessage(error.message)
         })
     }
 

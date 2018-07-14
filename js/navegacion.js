@@ -14,6 +14,7 @@ export class Navegacion {
         this.secciones = document.querySelectorAll("section");
         this.btnInicio = document.querySelector("#btn-inicio");
 
+        // La recarga de la animación de la portada sólo se hace en la página index
         if (this.pagina == 'index') {
             this.portadaNombre = document.querySelector("main section.home header h1");
             this.portadaCurriculum = document.querySelector("main section.home header h2");
@@ -33,19 +34,6 @@ export class Navegacion {
     }
 
     defineEventListeners() {
-
-        /*
-        this.navSecciones.forEach((enlaceSeccion) => {
-            enlaceSeccion.addEventListener('click', (event) => {
-                event.preventDefault();
-                let enlace = event.currentTarget.getAttribute('data-enlace');
-                let destino = document.querySelector(`#${enlace}`);
-                destino.scrollIntoView({ 
-                    behavior: 'smooth' 
-                })
-            })
-        })
-        */
         
         // Eventos click para los enlaces a las secciones en el menú
         this.navSecciones.forEach(enlaceSeccion => {
@@ -92,6 +80,7 @@ export class Navegacion {
     
     scrollController() {
 
+        // El Scroll spy sólo se hace en la página index
         if (this.pagina == 'index') {
             // Calcular en qué sección está el scroll
             let desplazamiento = 10

@@ -13,6 +13,7 @@
 body {
     font-family: Montserrat;
     color: var(--color-texto);
+    background-color: grey;
 }
 
 p {
@@ -379,13 +380,13 @@ span.periodo {
 
 /* Formulario */
 
-.form-contact {
+form {
     display: grid;
     width: 100%;
     grid-gap: 0.8rem;
     grid-template-columns: minmax(23%, 10rem) minmax(auto, 1fr);
 }
-.form-contact > * {
+form > * {
     align-self: center;
     overflow: hidden;
 }
@@ -425,14 +426,14 @@ label.top {
     grid-column: 2 / 3;
 }
 
-.form-contact button {
+button {
     font-family: "Montserrat";
     font-size: 1.2rem;
     color: var(--color-fondo);
     background-color: var(--color-activo);
     border: 1px solid var(--color-hover);
     border-radius: 3px;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 1rem;
     outline: none;
     transition: transform 0.15s linear;
 }
@@ -522,7 +523,7 @@ body footer p.copyleft {
     top: 50%;
     left: 50%;
     width: 80%;
-    max-width: 500px;
+    max-width: 700px;
     transform: translate(-50%, -50%);
     color: var(--color-fondo);
     background-color: rgb(243, 92, 92);
@@ -695,66 +696,88 @@ body footer p.copyleft {
 }
 
 /* Media Query para pantallas muy pequeñas */
-@media (max-width: 359px) {
+@media (max-width: 480px) {
     p, a, h2, h2 a, span, label, input, select, textarea,
     main section ul li, 
     main section ul li li {
         font-size: 0.8rem;
     }
+
     .fa-stack-1x {
         position:absolute;
         bottom:0.3rem;
     }
+
     .fa-stack-2x {
         font-size: 1.5em;
     }
+
     body > header {
         height: 3rem;
     }
+
     body > header > h1 {
         font-size: 0.8rem;
     }
+
     nav ul.inicio {
         bottom:0 ;
         right: 0.2rem;
     }
+
     main section > header h1.titulo {
         font-size: 1.2rem;
     }
+
     .menu-icon {
         right: 0.1rem;
     }
+
     .menu-principal {
         top: 3rem;
     }
+
     .menu-principal ul li a {
         font-size: 0.9rem;
         padding: 0.3rem 1rem;
         transform: scale(1.1) translateX(0.2rem);
     }
+
     @media (hover: hover) {
         .menu-principal ul li a:hover {
             transform: scale(1.2) translateX(0.2rem);
         }
     }
+
     main section h2 {
         font-size: 1rem;
+        margin-bottom: 0.4rem;
     }
+
     main section.home header h1 {
-        font-size: 1rem;
+        font-size: 2.2rem;
+        line-height: 2.2rem;
         margin-bottom: 0;
     }
+
     main section.home header h2 {
-        font-size: 1.2rem;
-        margin-top: 0;
+        font-size: 1.5rem;
+        margin-top: 1rem;
     }
+
     span.periodo {
         font-size: 0.7rem;
-    }    
+    }
+
+    form {
+        grid-gap: 0.5rem;
+    }  
+
     input, textarea, select {
         overflow: hidden;
     }
-    .form-contact button {
+
+    button {
         font-size: 0.8rem;
     }
 
@@ -762,4 +785,3 @@ body footer p.copyleft {
         font-size: 0.6rem;
     }    
 }
-

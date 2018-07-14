@@ -1,58 +1,30 @@
 {
-  "messages": [
+  "tareas": [
     {
-      "nombre": "Miguel Angel Otero Prado",
-      "email": "miguelitri@gmail.com",
-      "comoConocido": "otros",
-      "comoConocidoOtros": "inspiración divina",
-      "numero": "687780332",
-      "mensaje": "Sin novedad en el frente...",
+      "tarea": "Terminar la práctica de fundamentos de frontend",
+      "completada": true,
       "id": 1
     },
     {
-      "nombre": "sdfsdfsdf",
-      "email": "adads@sfsd.es",
-      "comoConocido": "google",
-      "comoConocidoOtros": "",
-      "numero": "123456789",
-      "mensaje": "dfgdf gdfg asdfg asdfg as",
+      "tarea": "Hacer la compra",
+      "completada": false,
       "id": 2
     },
     {
-      "nombre": "sdfsdfsdfsdfsd",
-      "email": "",
-      "comoConocido": "",
-      "comoConocidoOtros": "",
-      "numero": "",
-      "mensaje": "",
+      "tarea": "Sacar a pasear al perro",
+      "completada": false,
       "id": 3
-    },
+    }
+  ],
+  "messages": [
     {
-      "id": 4,
-      "nombre": "sdfsdfsdf",
-      "email": "sdfsdsd@sdfsdf.es",
+      "id": 1,
+      "nombre": "Miguel Angel Otero Prado",
+      "email": "miguelitri@gmail.com",
       "comoConocido": "otros",
-      "comoConocidoOtros": "sdfsdfsdfsd",
-      "numero": "123456789",
-      "mensaje": "sdrf sdfsdf sdfad"
-    },
-    {
-      "id": 5,
-      "nombre": "Pepe Pérez",
-      "email": "pepe@gmail.com",
-      "comoConocido": "otros",
-      "comoConocidoOtros": "inspiración divina",
-      "numero": "123456789",
-      "mensaje": "bla bla bla bla..."
-    },
-    {
-      "id": 6,
-      "nombre": "bbbb",
-      "email": "aaa@ccc.com",
-      "comoConocido": "facebook",
-      "comoConocidoOtros": "",
-      "numero": "987654321",
-      "mensaje": "nada nuevo"
+      "comoConocidoOtros": "Inspiración divina",
+      "numero": "687780332",
+      "mensaje": "Bla bla bla..."
     }
   ]
 }
