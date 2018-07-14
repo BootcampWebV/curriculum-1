@@ -18,6 +18,8 @@ export class Tareas {
         this.oInputTarea = document.querySelector('#nueva-tarea')
         this.listaTareas = document.querySelector('#lista-tareas')
 
+        this.oInputTarea.setCustomValidity("Debe introducir una tarea");
+
         this.handlerErrorMessage.currentFocus = this.oInputTarea;
 
         this.fetchTareas();

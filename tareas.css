@@ -13,15 +13,6 @@ form.form-tareas {
     grid-column: 1 / 2;
 }
 
-@media (max-width: 480px) {
-    form.form-tareas {
-        grid-template-columns: auto 4rem;
-    }
-    button {
-        padding: 0.5rem 0.5rem;
-    }
-}
-
 section.section-lista-tareas ul {
     list-style: none;
 }
@@ -50,4 +41,15 @@ span.btn-eliminar-tarea {
 }
 span.btn-eliminar-tarea .fa-trash-alt {
     font-size: 1.3rem;
+}
+
+/* Media Query para pantallas pequeñas */
+
+@media (max-width: 480px) {
+    form.form-tareas {
+        grid-template-columns: auto 4rem;
+    }
+    button[type="submit"] {
+        padding: 0.5rem 0.5rem;
+    }
 }
