@@ -2,6 +2,12 @@ import { ErrorMessage } from './error-message.js'
 
 const MAX_WORDS = 150
 
+/* El formulario de contacto tiene el atributo "novalidate", de modo que la validación se hace en el evento "submit" del mismo, 
+   donde se comprueba la validez de cada campo mediante la función "checkValidity" y se muestra un mensaje de error emergente 
+   para el primer campo que no cumpla la validación. Se capturan los eventos "input" y "blur" de cada campo para poner o quitar 
+   un borde rojo según sea válido o no
+*/
+
 export class ContactForm {
 
     constructor() {
@@ -34,12 +40,11 @@ export class ContactForm {
         this.addEventListeners()
 
         // Cargar mensajes de la API json-server.
-        // Si el servidor no está corriendo o hay algún error, se muestra en la consola
+        // Si el servidor no está corriendo o hay algún error, se muestra en la consola, pero no se muestra el mensaje emergente
         this.cargarMensajes()
     }
 
     addEventListeners() {
-        
         
         this.oSelectConocido.addEventListener('change', this.changeConocido.bind(this))
         this.oInputNombre.addEventListener('input', this.comprobarCampo)
@@ -172,6 +177,7 @@ export class ContactForm {
             console.log(response);
         })
         .catch(error => {
+            // Se muestra el error en la consola, pero no se muestra el mensaje emergente
             console.log(error);
         })
     }
