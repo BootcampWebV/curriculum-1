@@ -18,7 +18,7 @@ export class SmoothScroll {
             node = node.offsetParent;
             y += node.offsetTop;
         } 
-        return y - 65;
+        return y - 60;
     }
 
     smoothScroll(eID) {

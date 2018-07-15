@@ -198,7 +198,7 @@ main .sections-wrapper {
     margin: 0 auto;
     display: block;
     width: 100%;
-    padding: 0.8rem 1.5rem ;
+    padding: 0.7rem 1.7rem 2.5rem 1.7rem ;
     max-width: 100%;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
@@ -211,7 +211,7 @@ main section > header {
     margin: 0 0 1.5rem 0;
     width: 103%;
     transform: translateX(-1.5%);
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 1.5rem 0.7rem 1.5rem;
     border-radius: 3px;
     box-shadow: 3px 3px 8px var(--color-menu);
     color: var(--color-fondo);
@@ -237,7 +237,7 @@ main section ul {
     list-style: disc;
 }
 main section ul li {
-    margin-left: 1.5rem;
+    margin-left: 1.6rem;
 }
 main section ul li li {
     margin-left: 2rem;
@@ -296,19 +296,23 @@ main section.home header h1 {
     margin-top: 2rem;
     text-shadow: 3px 3px 3px black;
 
-    animation: titulo-curriculum 0.8s ease-out;
-    animation-fill-mode: forwards;
 
 }
+.animacion-curriculum {
+    animation: titulo-curriculum 0.8s ease-out;
+    animation-fill-mode: forwards;
+}
+
 
 main section.home header h2 {
     font-size: 1.8rem;
     margin-top: 2rem;
     text-shadow: 3px 3px 3px black;
+}
 
+.animacion-nombre {
     animation: titulo-nombre 0.8s ease-out;
     animation-fill-mode: forwards;
-    
 }
 
 /* Animaciones para los textos de la portada */
@@ -403,7 +407,7 @@ form {
     display: grid;
     width: 100%;
     grid-gap: 0.8rem;
-    grid-template-columns: minmax(23%, 10rem) minmax(auto, 1fr);
+    grid-template-columns: minmax(25%, 6rem) minmax(auto, 1fr);
 }
 form > * {
     align-self: center;
@@ -825,4 +829,12 @@ body footer p.copyleft {
         z-index: 4;
         transition: all 0.15s linear;
     }
+
+    body > footer {
+        padding: 3rem;
+    }
+
+    ul.redes-sociales {
+        margin-bottom: 2rem;
+    }    
 }

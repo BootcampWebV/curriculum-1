@@ -6,29 +6,84 @@
     width: 100%;
 }
 
+main section {
+    margin-bottom: 0.5rem;
+}
+
+main .sections-wrapper {
+    width: auto;
+    padding: 0.3rem 0.9rem;
+}
+
+main section > header {
+    padding: 0.2rem 0.4rem;
+    margin: 0 0 1rem 0;
+    width: 102%;
+    transform: translateX(-1%);
+}
+
+main section > header h1.titulo {
+    font-size: 1.2rem;
+}
+
+main section > header i {
+    font-size: 1.2rem;
+    padding: 0.3rem 0 0 0.3rem;
+}
+
 form.form-tareas {
-    grid-template-columns: auto 6rem;
+    grid-template-columns: 2.5rem auto 6rem;
+}
+label {
+    font-size: 0.8rem;
+    line-height: 0.7rem;
 }
 .form-tareas input {
-    grid-column: 1 / 2;
+    grid-column: 2 / 3;
+    font-size: 0.8rem;
+}
+.form-tareas button[type="submit"] {
+    grid-column: 3 / 4;
+    font-size: 0.9rem;
+}
+
+div.wrapper-pagina {
+    position: fixed;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 4rem;
+}
+
+.sections-wrapper.wrapper-lista-tareas {
+    position: fixed;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 11.3rem;
+    bottom: 0.5rem;
 }
 
 section.section-lista-tareas ul {
     list-style: none;
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    overflow: auto;
+    bottom: 1.5rem;
+    top: 3.5rem;    
 }
 
 section.section-lista-tareas ul li {
     border: 1px solid #a0a0a0;
     box-shadow: 1px 1px 2px grey;
-    line-height: 2rem;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;;
+    line-height: 1rem;
+    padding: 0.3rem 0.3rem 0.4rem 0.4rem;
+    margin: 0.15rem;;
 }
 span.texto-tarea {
     cursor: pointer;
+    font-size: 0.9rem;
 }
 span.texto-tarea.completada {
-    cursor: pointer;
     text-decoration: line-through;
     color: grey;
 }
@@ -40,16 +95,62 @@ span.btn-eliminar-tarea {
     /*border: 1px solid grey;*/
 }
 span.btn-eliminar-tarea .fa-trash-alt {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 /* Media Query para pantallas pequeñas */
 
 @media (max-width: 480px) {
-    form.form-tareas {
-        grid-template-columns: auto 4rem;
+
+    div.wrapper-pagina {
+        top: 3.5rem;
     }
+
+    main section {
+        margin-bottom: 0.5rem;
+    }  
+
+    main section > header h1.titulo {
+        font-size: 1.1rem;
+    }
+
+    main section > header i {
+        font-size: 1.5rem;
+        padding: 0.3rem 0 0 0.3rem;
+    }
+
+    main .sections-wrapper {
+        padding: 0.4rem 0.9rem;
+    }
+
+    .sections-wrapper.wrapper-lista-tareas {
+        position: fixed;
+        top: 11rem;
+    }
+
+    section.section-lista-tareas ul {
+        top: 4rem;
+        bottom: 1rem;
+    }
+
+    form.form-tareas {
+        grid-template-columns: 2.5rem auto 4rem;
+    }
+
     button[type="submit"] {
         padding: 0.5rem 0.5rem;
+    }
+}
+
+/* Media Query para escritorio, pantallas con resolución mayor a los 900 pixels de ancho */
+
+@media (min-width: 900px) {
+
+    div.wrapper-pagina {
+        top: 3.5rem;
+    }
+
+    .sections-wrapper.wrapper-lista-tareas {
+        top: 10.8rem;
     }
 }

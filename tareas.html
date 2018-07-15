@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tareas</title>
     <link rel="icon" type="image/png" href="./assets/favicon.png">
@@ -73,29 +73,121 @@
                 <button type="button" id="btn-close-message">X</button>
             </header>
         </section>
-        <div class="sections-wrapper">
-            <section id="section-form-tareas">
-                <header>
-                    <i class="fas fa-file"></i>
-                    <h1 class="titulo">Añadir Tarea</h1>
-                </header>
-                <p>
-                    Introduzca la nueva tarea:
-                </p>
-                <form class="form-tareas" id="form-tareas" >
-                    <input type="text" id="nueva-tarea" name="nueva-tarea" placeholder="Nueva Tarea" required>
-                    <button type="submit" id="btn-crear-tarea">Añadir</button>
-                </form>
-            </section>    
-            <section id="section-lista-tareas" class="section-lista-tareas">
-                <header>
-                    <i class="fas fa-list-ul"></i>
-                    <h1 class="titulo">Lista de Tareas</h1>
-                </header>
-                <ul id="lista-tareas">
-                </ul>
-            </section>
+
+        <div>
+
+        <div class="wrapper-pagina">
+            <div class="sections-wrapper">
+                <section id="section-form-tareas">
+                    <header>
+                        <i class="fas fa-file"></i>
+                        <h1 class="titulo">Añadir Tarea</h1>
+                    </header>
+                    <!--<p>
+                        Tarea:
+                    </p>-->
+                    <form class="form-tareas" id="form-tareas" >
+                        <label for="nueva-tarea">Tarea</label>
+                        <input type="text" id="nueva-tarea" name="nueva-tarea" placeholder="Nueva Tarea" required>
+                        <button type="submit" id="btn-crear-tarea">Añadir</button>
+                    </form>
+                </section>   
+            </div>
+            <div class="sections-wrapper wrapper-lista-tareas">
+                <section id="section-lista-tareas" class="section-lista-tareas">
+                    <header>
+                        <i class="fas fa-list-ul"></i>
+                        <h1 class="titulo">Lista de Tareas</h1>
+                    </header>
+                    
+                    <!--<ul id="lista-tareas">
+                    </ul>-->
+
+                    <ul id="lista-tareas"><li data-id="1">
+
+                            <span class="texto-tarea completada">Terminar la práctica de fundamentos de frontend</span>
+
+                            <span class="btn-eliminar-tarea" title="Eliminar Tarea">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                            </span>
+
+                          </li>
+<li data-id="2">
+
+                            <span class="texto-tarea ">Hacer la compra</span>
+
+                            <span class="btn-eliminar-tarea" title="Eliminar Tarea">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                            </span>
+
+                          </li>
+<li data-id="3">
+
+                            <span class="texto-tarea ">Sacar a pasear al perro</span>
+
+                            <span class="btn-eliminar-tarea" title="Eliminar Tarea">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                            </span>
+
+                          </li>
+<li data-id="4">
+
+                            <span class="texto-tarea ">111</span>
+
+                            <span class="btn-eliminar-tarea" title="Eliminar Tarea">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                            </span>
+
+                          </li>
+<li data-id="5">
+
+                            <span class="texto-tarea ">222</span>
+
+                            <span class="btn-eliminar-tarea" title="Eliminar Tarea">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                            </span>
+
+                          </li>
+<li data-id="6">
+
+                            <span class="texto-tarea ">333</span>
+
+                            <span class="btn-eliminar-tarea" title="Eliminar Tarea">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                            </span>
+
+                          </li>
+<li data-id="7">
+
+                            <span class="texto-tarea ">444</span>
+
+                            <span class="btn-eliminar-tarea" title="Eliminar Tarea">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                            </span>
+
+                          </li>
+</ul>                    
+
+                </section>
+            </div>
         </div>
+        
+        </div>
+
     </main>
 </body>
 </html>

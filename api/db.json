@@ -1,14 +1,14 @@
 {
   "tareas": [
     {
-      "id": 1,
       "tarea": "Terminar la práctica de fundamentos de frontend",
-      "completada": true
+      "completada": true,
+      "id": 1
     },
     {
-      "id": 2,
       "tarea": "Hacer la compra",
-      "completada": false
+      "completada": false,
+      "id": 2
     },
     {
       "tarea": "Sacar a pasear al perro",

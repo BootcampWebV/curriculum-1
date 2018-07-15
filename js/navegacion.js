@@ -40,7 +40,7 @@ export class Navegacion {
             enlaceSeccion.addEventListener('click', (event) => {
                 const enlace = event.currentTarget.getAttribute('data-enlace');
                 if (enlace) {
-                    //event.preventDefault();
+                    event.preventDefault();
                     this.smoothScrollHandler.smoothScroll(event.currentTarget.getAttribute('data-enlace'));
                 }
             })
@@ -84,6 +84,9 @@ export class Navegacion {
         if (this.pagina == 'index') {
             // Calcular en qué sección está el scroll
             let desplazamiento = 10
+
+console.log(Math.max(30, window.innerHeight / desplazamiento))
+
             let pageOffset = window.pageYOffset + Math.max(100, window.innerHeight / desplazamiento)
             let menuItem = 0
             if (pageOffset >=  this.offsets['#home'] && pageOffset < this.offsets['#quien-soy']) {
@@ -130,7 +133,10 @@ export class Navegacion {
         // Si volvemos al inicio, reiniciamos la animación de los títulos, clonando los elementos animados y sustituyendo los antiguos por los clones
         if (window.pageYOffset == 0 && this.portadaNombre) {
             let clonNombre = this.portadaNombre.cloneNode(true);
+            clonNombre.classList.add('animacion-nombre');
+
             let clonCurriculum = this.portadaCurriculum.cloneNode(true);
+            clonCurriculum.classList.add('animacion-curriculum');
             
             this.portadaNombre.parentNode.replaceChild(clonNombre, this.portadaNombre);
             this.portadaNombre = clonNombre;
