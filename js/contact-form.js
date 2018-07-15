@@ -5,7 +5,7 @@ const URL_API_MENSAJES = 'http://localhost:3000/messages'
 
 /* El formulario de contacto tiene el atributo "novalidate", de modo que la validación se hace en el evento "submit" del mismo, 
    donde se comprueba la validez de cada campo mediante la función "checkValidity" y se muestra un mensaje de error emergente 
-   para el primer campo que no cumpla la validación. Se capturan los eventos "input" y "blur" de cada campo para poner o quitar 
+   para el primer campo que no cumpla la validación. Se capturan los eventos "input" y "focus" de cada campo para poner o quitar 
    un borde rojo según sea válido o no
 */
 

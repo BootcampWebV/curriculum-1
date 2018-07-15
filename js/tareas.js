@@ -4,7 +4,7 @@ import { ErrorMessage } from './error-message.js'
 const URL_API = 'http://localhost:3000/tareas'
 
 /* Para el formulario de tareas se deja la validación a cargo del navegador (no tiene atributo "novalidate"). 
-   Del mismo modo que el formulario de contacto, se capturan los eventos "input" y "blur" del campo 
+   Del mismo modo que el formulario de contacto, se capturan los eventos "input" y "focus" del campo 
    para poner o quitar el borde rojo. Si el campo no es válido, se establece el mensaje de error a mostrar adecuado 
    para cuando se pulse el botón submit, mediante la función "setCustomValidity"
 */
@@ -31,10 +31,7 @@ export class Tareas {
 
         // Cargar tareas del REST API json-server
         this.fetchTareas();
-
-        // Evento blur para el campo de texto
-        // this.oInputTarea.addEventListener('blur', this.validarTarea)
-        
+       
         // Evento Input para validar el campo tarea
         this.oInputTarea.addEventListener('input', this.validarTarea.bind(this))
         this.oInputTarea.addEventListener('focus', this.validarTarea.bind(this))
