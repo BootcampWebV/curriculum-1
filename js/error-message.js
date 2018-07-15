@@ -32,7 +32,9 @@ export class ErrorMessage {
     }
 
     closeErrorMessage() {
-        this.currentFocus.focus();
+        if (this.currentFocus) {
+            this.currentFocus.focus();
+        }
         this.oSectionError.classList.remove('error-visible')   
     }
 

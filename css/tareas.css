@@ -43,6 +43,7 @@ label {
     font-size: 0.8rem;
 }
 .form-tareas button[type="submit"] {
+    cursor: pointer;
     grid-column: 3 / 4;
     font-size: 0.9rem;
 }
