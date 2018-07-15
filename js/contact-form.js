@@ -1,6 +1,7 @@
 import { ErrorMessage } from './error-message.js'
 
 const MAX_WORDS = 150
+const URL_API_MENSAJES = 'http://localhost:3000/messages'
 
 /* El formulario de contacto tiene el atributo "novalidate", de modo que la validación se hace en el evento "submit" del mismo, 
    donde se comprueba la validez de cada campo mediante la función "checkValidity" y se muestra un mensaje de error emergente 
@@ -11,8 +12,6 @@ const MAX_WORDS = 150
 export class ContactForm {
 
     constructor() {
-
-        this.URL_API = 'http://localhost:3000/messages'
 
         // Controlador para los mensajes de error
         this.handlerErrorMessage = new(ErrorMessage)
@@ -48,19 +47,21 @@ export class ContactForm {
         
         this.oSelectConocido.addEventListener('change', this.changeConocido.bind(this))
         this.oInputNombre.addEventListener('input', this.comprobarCampo)
-        this.oInputNombre.addEventListener('blur', this.comprobarCampo)
+        this.oInputNombre.addEventListener('focus', this.comprobarCampo)
         this.oInputEmail.addEventListener('input', this.comprobarCampo)
-        this.oInputNombre.addEventListener('blur', this.comprobarCampo)
+        this.oInputEmail.addEventListener('focus', this.comprobarCampo)
+        this.oInputNombre.addEventListener('focus', this.comprobarCampo)
         this.oContactNumber.addEventListener('input', this.comprobarCampo)
+        this.oContactNumber.addEventListener('focus', this.comprobarCampo)
         this.oTextMessage.checkValidity = this.comprobarPalabras
         this.oTextMessage.addEventListener('input', this.comprobarCampo)
-        this.oTextMessage.addEventListener('blur', this.comprobarCampo)
+        this.oTextMessage.addEventListener('focus', this.comprobarCampo)
         this.oContactForm.addEventListener('submit', this.validateContactForm.bind(this))
     }
 
     cargarMensajes() {
 
-        fetch(this.URL_API)
+        fetch(URL_API_MENSAJES)
         .then(response => {
             return response.json()
         })
@@ -163,10 +164,12 @@ export class ContactForm {
         }
         console.dir(this.oData)
 
-        this.mensajes.push(this.oData);
+        this.oContactForm.reset()
+
+        this.handlerErrorMessage.showError('Mensaje enviado', 'ok')
 
         // Enviar datos al servidor json-server
-        fetch(this.URL_API, {
+        fetch(URL_API_MENSAJES, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -174,7 +177,8 @@ export class ContactForm {
             body: JSON.stringify(this.oData)
         })
         .then(response => {
-            console.log(response);
+            if (response.status == 201)
+                this.mensajes.push(this.oData);
         })
         .catch(error => {
             // Se muestra el error en la consola, pero no se muestra el mensaje emergente

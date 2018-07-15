@@ -549,11 +549,18 @@ body footer p.copyleft {
     max-width: 700px;
     transform: translate(-50%, -50%);
     color: var(--color-fondo);
-    background-color: rgb(243, 92, 92);
     border: 1px solid white;
     border-radius: 4px;
     box-shadow: 1px 1px 5px black;
     text-align: center;
+}
+
+.header-error-message.error {
+    background-color: rgb(192, 64, 64);
+}
+
+.header-error-message.ok {
+    background-color: rgb(0, 132, 0);
 }
 
 .header-error-message h2 {
@@ -570,7 +577,7 @@ body footer p.copyleft {
     cursor: pointer;
     top: 0.4rem;
     right: 0.5rem;
-    color: maroon;
+    color: var(--color-texto);
     background-color: var(--color-fondo);
     font-size: 1.3rem;
     font-weight: bold;

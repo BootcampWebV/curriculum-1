@@ -85,8 +85,6 @@ export class Navegacion {
             // Calcular en qué sección está el scroll
             let desplazamiento = 10
 
-console.log(Math.max(30, window.innerHeight / desplazamiento))
-
             let pageOffset = window.pageYOffset + Math.max(100, window.innerHeight / desplazamiento)
             let menuItem = 0
             if (pageOffset >=  this.offsets['#home'] && pageOffset < this.offsets['#quien-soy']) {
@@ -133,9 +131,11 @@ console.log(Math.max(30, window.innerHeight / desplazamiento))
         // Si volvemos al inicio, reiniciamos la animación de los títulos, clonando los elementos animados y sustituyendo los antiguos por los clones
         if (window.pageYOffset == 0 && this.portadaNombre) {
             let clonNombre = this.portadaNombre.cloneNode(true);
+            clonNombre.classList.remove('oculto')
             clonNombre.classList.add('animacion-nombre');
 
             let clonCurriculum = this.portadaCurriculum.cloneNode(true);
+            clonCurriculum.classList.remove('oculto')
             clonCurriculum.classList.add('animacion-curriculum');
             
             this.portadaNombre.parentNode.replaceChild(clonNombre, this.portadaNombre);

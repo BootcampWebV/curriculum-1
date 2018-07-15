@@ -37,7 +37,8 @@ export class Tareas {
         
         // Evento Input para validar el campo tarea
         this.oInputTarea.addEventListener('input', this.validarTarea.bind(this))
-        this.validarTarea()
+        this.oInputTarea.addEventListener('focus', this.validarTarea.bind(this))
+        this.setErrorMessage()
 
         // Evento submit del formulario, validar y crear nueva tarea
         this.formNuevaTarea.addEventListener('submit', this.crearTarea.bind(this))
@@ -157,7 +158,15 @@ export class Tareas {
             this.oInputTarea.classList.remove('invalido')
         }
         this.oInputTarea.setCustomValidity(msg)
-        
+    }
+
+    setErrorMessage() {
+        let msg = ''
+        this.oInputTarea.setCustomValidity(msg)
+        if(!this.oInputTarea.checkValidity()) {
+            msg = 'Debe introducir la Tarea'
+        }
+        this.oInputTarea.setCustomValidity(msg)
     }
 
     crearTarea(event) {
@@ -200,7 +209,7 @@ export class Tareas {
 
                 // Limpiar campo del formulario
                 this.oInputTarea.value = ''
-                this.validarTarea()
+                this.setErrorMessage()
             }
         })
         .catch(error => {
